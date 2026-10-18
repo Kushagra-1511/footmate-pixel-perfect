@@ -34,7 +34,8 @@ export const Route = createFileRoute("/products/$slug")({
 
 function ProductPage() {
   const { slug } = Route.useLoaderData();
-  const p = getProduct(slug)!;
+  const p = getProduct(slug);
+  if (!p) throw notFound();
   const a = accentClasses[p.slug];
   const related = products.filter((x) => x.slug !== p.slug);
 
