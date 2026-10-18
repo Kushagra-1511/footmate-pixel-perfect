@@ -2,6 +2,8 @@
 @source "../src";
 @import "tw-animate-css";
 
+@source inline("bg-{spring,bounce,pulse,bloom} bg-{spring,bounce,pulse,bloom}/20 group-hover:bg-{spring,bounce,pulse,bloom}");
+
 @custom-variant dark (&:is(.dark *));
 
 /*

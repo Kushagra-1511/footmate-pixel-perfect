@@ -15,9 +15,12 @@ export function CTASection({
   secondary?: { to: string; label: string };
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-ink-foreground">
+    <section className="grain relative isolate overflow-hidden bg-ink text-ink-foreground">
+      <div aria-hidden className="pointer-events-none absolute -right-20 top-1/2 hidden -translate-y-1/2 gap-3 lg:flex">
+        {["bg-spring", "bg-bounce", "bg-pulse", "bg-bloom"].map((c, i) => <span key={c} style={{ animationDelay: `${-i * 1.5}s` }} className={`float-soft h-40 w-40 rounded-full ${c}`} />)}
+      </div>
       <img src={hero} alt="" aria-hidden loading="lazy" width={1920} height={1152} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20" />
-      <div className="container-site py-24 md:py-36">
+      <div className="container-site relative z-[2] py-24 md:py-40">
         <h2 className="display-xl max-w-4xl">{title}</h2>
         {intro && <p className="mt-6 max-w-xl text-lg text-ink-foreground/75">{intro}</p>}
         <div className="mt-10 flex flex-wrap gap-3">

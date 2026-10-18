@@ -4,7 +4,7 @@ import stairs from "@/assets/stairs.jpg";
 import hero from "@/assets/hero-interior.jpg";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, Reveal } from "@/components/site/primitives";
-import { ColourBadge, CompareToggle, ProductCard, ProductRatings, ProductSwatch, SpecTable } from "@/components/site/product";
+import { onAccent, ColourBadge, CompareToggle, ProductCard, ProductRatings, ProductSwatch, SpecTable } from "@/components/site/product";
 import { accentClasses, getProduct, products } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
@@ -40,10 +40,20 @@ function ProductPage() {
 
   return (
     <>
+      <section aria-label={`FOOTMATE ${p.name}`} className={cn("grain relative overflow-hidden", a.bg, onAccent[p.slug])}>
+        <img src={p.textureImage} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-multiply" />
+        <div className="container-site relative z-[2] pb-10 pt-12 md:pt-16">
+          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.22em] opacity-80">
+            <span>FOOTMATE · {p.colourName}</span>
+            <span>{p.thicknessMm} mm · {p.densityCategory}</span>
+          </div>
+          <p aria-hidden className="display-product rise mt-10 select-none">{p.name}</p>
+        </div>
+      </section>
       <Breadcrumbs items={[{ label: "Products", to: "/products" }, { label: p.name }]} />
       <section className="container-site grid gap-10 pb-20 pt-8 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
-          <ProductSwatch product={p} large className="aspect-square lg:sticky lg:top-24" />
+          <ProductSwatch product={p} large className="aspect-square rounded-[2rem] lg:sticky lg:top-24" />
         </div>
         <div className="lg:col-span-5 lg:pt-6">
           <ColourBadge product={p} />
