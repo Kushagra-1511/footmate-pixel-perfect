@@ -83,13 +83,13 @@ export function ProductSwatch({ product, className, large = false }: { product: 
       </svg>
       <div className="absolute inset-0 z-[2] flex flex-col justify-between p-6 md:p-8">
         <div className="flex items-start justify-between">
-          <span className="eyebrow text-current opacity-75">FOOTMATE</span>
+          <span className="nav-caps opacity-75">FOOTMATE</span>
           <span className="text-xs font-bold tracking-widest opacity-75">{product.densityCategory}</span>
         </div>
         <div>
-          <p className={cn("font-extrabold leading-[0.8] tracking-[-0.07em]", large ? "text-[clamp(4.5rem,13vw,11rem)]" : "text-[clamp(3.2rem,6vw,4.6rem)]")}>{product.name}</p>
+          <p className={cn("font-extralight leading-[0.85] tracking-[-0.05em]", large ? "text-[clamp(4.5rem,13vw,11rem)]" : "text-[clamp(3.2rem,6vw,4.6rem)]")}>{product.name}</p>
           <p className="mt-4 flex items-baseline gap-2 text-sm font-semibold opacity-80">
-            <span className={cn("font-extrabold tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
+            <span className={cn("font-light tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
           </p>
         </div>
       </div>
@@ -99,25 +99,22 @@ export function ProductSwatch({ product, className, large = false }: { product: 
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article style={{ ["--acc" as string]: product.accentColour }} className="lift-accent group flex h-full flex-col overflow-hidden bg-card">
-      <Link to="/products/$slug" params={{ slug: product.slug }} className="block" aria-label={`View ${product.name}`}>
-        <ProductSwatch product={product} className="aspect-[4/5]" />
+    <article className="group flex h-full flex-col">
+      <Link to="/products/$slug" params={{ slug: product.slug }} className="zoom-tile block" aria-label={`View ${product.name}`}>
+        <ProductSwatch product={product} className="aspect-[3/4]" />
       </Link>
-      <div className="flex flex-1 flex-col gap-5 p-6">
-        <div className="flex items-center justify-between">
-          <ColourBadge product={product} />
-          <span className="text-xs font-semibold text-muted-foreground">{product.thicknessMm} mm</span>
+      <div className="flex flex-1 flex-col gap-4 pt-5">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="text-2xl font-light tracking-tight md:text-3xl">{product.name}</h3>
+          <span className="nav-caps text-muted-foreground">{product.thicknessMm} mm · {product.densityCategory}</span>
         </div>
-        <div>
-          <h3 className="text-3xl font-extrabold tracking-tight">{product.name}</h3>
-          <p className="mt-1 text-sm font-semibold">{product.thicknessMm} mm · {product.densityCategory} classification</p>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{product.shortDescription}</p>
-        </div>
+        <ColourBadge product={product} className="text-muted-foreground" />
+        <p className="text-sm leading-relaxed text-muted-foreground">{product.shortDescription}</p>
         <ProductRatings product={product} />
-        <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-5">
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4">
           <CompareToggle product={product} />
-          <Link to="/products/$slug" params={{ slug: product.slug }} className="inline-flex items-center gap-1 text-sm font-semibold">
-            View product <span className={cn("grid h-7 w-7 place-items-center rounded-full transition-transform duration-500 group-hover:rotate-45", accentClasses[product.slug].bg, onAccent[product.slug])}><ArrowUpRight className="h-4 w-4" /></span>
+          <Link to="/products/$slug" params={{ slug: product.slug }} className="nav-caps inline-flex items-center gap-2 underline-offset-4 group-hover:underline">
+            View <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
       </div>

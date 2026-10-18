@@ -9,7 +9,6 @@ import { onAccent } from "./product";
 export function ProductHighlight() {
   const [i, setI] = useState(0);
   const p = products[i] ?? products[0]!;
-  const a = accentClasses[p.slug];
   const ink = onAccent[p.slug];
   return (
     <section
@@ -29,7 +28,7 @@ export function ProductHighlight() {
                 aria-selected={idx === i}
                 onClick={() => setI(idx)}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-bold transition-all duration-500",
+                  "inline-flex items-center gap-2 border px-4 py-2 nav-caps transition-all duration-500",
                   idx === i ? "border-charcoal bg-charcoal text-charcoal-foreground" : "border-current/30 hover:border-current",
                 )}
               >
@@ -44,11 +43,11 @@ export function ProductHighlight() {
           {p.name}
         </h2>
 
-        <div key={p.slug + "b"} className="rise mt-10 grid gap-10 border-t-2 border-current/25 pt-10 [animation-delay:150ms] lg:grid-cols-12">
+        <div key={p.slug + "b"} className="rise mt-10 grid gap-10 border-t border-current/25 pt-10 [animation-delay:150ms] lg:grid-cols-12">
           <dl className="grid grid-cols-3 gap-6 lg:col-span-5">
-            <div><dt className="text-xs font-semibold opacity-70">Thickness</dt><dd className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">{p.thicknessMm}<span className="text-lg">mm</span></dd></div>
-            <div><dt className="text-xs font-semibold opacity-70">Class</dt><dd className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">{p.densityCategory}</dd></div>
-            <div><dt className="text-xs font-semibold opacity-70">Colour</dt><dd className="mt-1 text-xl font-extrabold md:text-2xl">{p.colourName}</dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Thickness</dt><dd className="mt-1 text-4xl font-light tracking-tight md:text-5xl">{p.thicknessMm}<span className="text-lg">mm</span></dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Class</dt><dd className="mt-1 text-4xl font-light tracking-tight md:text-5xl">{p.densityCategory}</dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Colour</dt><dd className="mt-1 text-xl font-light md:text-2xl">{p.colourName}</dd></div>
           </dl>
           <div className="lg:col-span-7">
             <p className="max-w-2xl text-lg font-medium leading-relaxed md:text-xl">{p.fullDescription}</p>
@@ -62,12 +61,10 @@ export function ProductHighlight() {
             <Link
               to="/products/$slug"
               params={{ slug: p.slug }}
-              className="group mt-10 inline-flex items-center gap-3 rounded-full bg-charcoal py-2 pl-6 pr-2 text-sm font-bold text-charcoal-foreground"
+              className="nav-caps group mt-10 inline-flex items-center gap-3 border-b border-current pb-1.5"
             >
               Discover {p.name}
-              <span className={cn("grid h-9 w-9 place-items-center rounded-full transition-transform duration-500 group-hover:rotate-45", a.bg, ink)}>
-                <ArrowUpRight className="h-4 w-4" />
-              </span>
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:rotate-45" />
             </Link>
           </div>
         </div>

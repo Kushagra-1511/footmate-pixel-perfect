@@ -53,7 +53,7 @@ function ProductPage() {
       <Breadcrumbs items={[{ label: "Products", to: "/products" }, { label: p.name }]} />
       <section className="container-site grid gap-10 pb-20 pt-8 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
-          <ProductSwatch product={p} large className="aspect-square rounded-[2rem] lg:sticky lg:top-24" />
+          <ProductSwatch product={p} large className="aspect-square lg:sticky lg:top-24" />
         </div>
         <div className="lg:col-span-5 lg:pt-6">
           <ColourBadge product={p} />
