@@ -239,20 +239,6 @@
   text-transform: uppercase;
 }
 
-/* Soft light haze so dark text stays readable on top of a photo */
-@utility brand-plate {
-  position: relative;
-  isolation: isolate;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -1.1rem -1.6rem;
-    z-index: -1;
-    background: var(--charcoal-foreground);
-    opacity: 0.72;
-    filter: blur(16px);
-  }
-}
 
 /* Slow image zoom inside a tile on hover */
 @utility zoom-tile {
