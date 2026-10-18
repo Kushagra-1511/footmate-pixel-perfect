@@ -10,6 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ConsumerLawRouteImport } from './routes/consumer-law'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RequestSamplesRouteImport } from './routes/request-samples'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TradeRouteImport } from './routes/trade'
 import { Route as WhyUnderlayRouteImport } from './routes/why-underlay'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
@@ -18,6 +28,56 @@ import { Route as ProductsCompareRouteImport } from './routes/products.compare'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsumerLawRoute = ConsumerLawRouteImport.update({
+  id: '/consumer-law',
+  path: '/consumer-law',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestSamplesRoute = RequestSamplesRouteImport.update({
+  id: '/request-samples',
+  path: '/request-samples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TradeRoute = TradeRouteImport.update({
+  id: '/trade',
+  path: '/trade',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhyUnderlayRoute = WhyUnderlayRouteImport.update({
@@ -43,6 +103,16 @@ const ProductsCompareRoute = ProductsCompareRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/consumer-law': typeof ConsumerLawRoute
+  '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
+  '/request-samples': typeof RequestSamplesRoute
+  '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/terms': typeof TermsRoute
+  '/trade': typeof TradeRoute
   '/why-underlay': typeof WhyUnderlayRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
@@ -50,6 +120,16 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/consumer-law': typeof ConsumerLawRoute
+  '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
+  '/request-samples': typeof RequestSamplesRoute
+  '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/terms': typeof TermsRoute
+  '/trade': typeof TradeRoute
   '/why-underlay': typeof WhyUnderlayRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
@@ -58,6 +138,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/consumer-law': typeof ConsumerLawRoute
+  '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
+  '/request-samples': typeof RequestSamplesRoute
+  '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/terms': typeof TermsRoute
+  '/trade': typeof TradeRoute
   '/why-underlay': typeof WhyUnderlayRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
@@ -67,6 +157,16 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/consumer-law'
+    | '/contact'
+    | '/privacy'
+    | '/request-samples'
+    | '/resources'
+    | '/sitemap.xml'
+    | '/sustainability'
+    | '/terms'
+    | '/trade'
     | '/why-underlay'
     | '/products/$slug'
     | '/products/compare'
@@ -74,6 +174,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/consumer-law'
+    | '/contact'
+    | '/privacy'
+    | '/request-samples'
+    | '/resources'
+    | '/sitemap.xml'
+    | '/sustainability'
+    | '/terms'
+    | '/trade'
     | '/why-underlay'
     | '/products/$slug'
     | '/products/compare'
@@ -81,6 +191,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/consumer-law'
+    | '/contact'
+    | '/privacy'
+    | '/request-samples'
+    | '/resources'
+    | '/sitemap.xml'
+    | '/sustainability'
+    | '/terms'
+    | '/trade'
     | '/why-underlay'
     | '/products/$slug'
     | '/products/compare'
@@ -89,6 +209,16 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ConsumerLawRoute: typeof ConsumerLawRoute
+  ContactRoute: typeof ContactRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RequestSamplesRoute: typeof RequestSamplesRoute
+  ResourcesRoute: typeof ResourcesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SustainabilityRoute: typeof SustainabilityRoute
+  TermsRoute: typeof TermsRoute
+  TradeRoute: typeof TradeRoute
   WhyUnderlayRoute: typeof WhyUnderlayRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   ProductsCompareRoute: typeof ProductsCompareRoute
@@ -102,6 +232,76 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consumer-law': {
+      id: '/consumer-law'
+      path: '/consumer-law'
+      fullPath: '/consumer-law'
+      preLoaderRoute: typeof ConsumerLawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-samples': {
+      id: '/request-samples'
+      path: '/request-samples'
+      fullPath: '/request-samples'
+      preLoaderRoute: typeof RequestSamplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trade': {
+      id: '/trade'
+      path: '/trade'
+      fullPath: '/trade'
+      preLoaderRoute: typeof TradeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/why-underlay': {
@@ -137,6 +337,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ConsumerLawRoute: ConsumerLawRoute,
+  ContactRoute: ContactRoute,
+  PrivacyRoute: PrivacyRoute,
+  RequestSamplesRoute: RequestSamplesRoute,
+  ResourcesRoute: ResourcesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SustainabilityRoute: SustainabilityRoute,
+  TermsRoute: TermsRoute,
+  TradeRoute: TradeRoute,
   WhyUnderlayRoute: WhyUnderlayRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   ProductsCompareRoute: ProductsCompareRoute,
