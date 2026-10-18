@@ -56,7 +56,7 @@ function Home() {
             <h1 className="display-mega">
               <span className="rise block">Luxury</span>
               <span className="rise block [animation-delay:120ms]">
-                from the <span className="text-outline">first</span>
+                from the <span className="type-outline">first</span>
               </span>
               <span className="rise block [animation-delay:240ms]">
                 step<span className="text-bloom">.</span>
@@ -82,7 +82,7 @@ function Home() {
             <span key={p.slug} className="flex items-center gap-8 pr-8 text-6xl font-extrabold tracking-[-0.06em] md:text-8xl">
               {p.name}
               <span className={`h-6 w-6 rounded-full md:h-9 md:w-9 bg-${p.accentToken}`} />
-              <span className="text-outline text-foreground/70">{p.thicknessMm}mm {p.densityCategory}</span>
+              <span className="type-outline text-foreground/70">{p.thicknessMm}mm {p.densityCategory}</span>
               <span className="h-px w-16 bg-border" />
             </span>
           ))}
