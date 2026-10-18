@@ -203,11 +203,8 @@
 }
 
 @utility text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
-  @supports not (-webkit-text-stroke: 1px black) {
-    color: inherit;
-  }
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.025em currentColor;
 }
 
 /* Fine noise grain to make flat colour fields feel tactile */

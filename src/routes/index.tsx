@@ -142,7 +142,7 @@ function Home() {
         <div className="container-site grid items-center gap-16 py-24 md:py-36 lg:grid-cols-2">
           <Reveal className="relative">
             <Parallax speed={0.06}><LayeredFloor /></Parallax>
-            <img src={carpet} alt="" aria-hidden loading="lazy" className="absolute -bottom-10 -right-6 hidden h-44 w-44 rounded-full object-cover shadow-lift ring-8 ring-background md:block" />
+            <img src={carpet} alt="" aria-hidden loading="lazy" className="absolute -top-8 right-0 hidden h-36 w-36 rounded-full object-cover shadow-lift ring-8 ring-background md:block"  />
           </Reveal>
           <Reveal delay={120}>
             <p className="eyebrow">What lies beneath matters</p>
