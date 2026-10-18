@@ -20,12 +20,12 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Main" className="hidden xl:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-5 2xl:gap-8">
             {mainNav.slice(1).map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="nav-caps text-muted-foreground transition-colors hover:text-foreground"
+                  className="nav-caps whitespace-nowrap text-muted-foreground transition-colors hover:text-foreground"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
@@ -36,7 +36,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild variant="outline" size="sm" className="hidden md:inline-flex">
+          <Button asChild variant="outline" size="sm" className="hidden md:inline-flex xl:hidden 2xl:inline-flex">
             <Link to="/trade">Trade Enquiry</Link>
           </Button>
           <Button asChild size="sm" className="hidden sm:inline-flex">
