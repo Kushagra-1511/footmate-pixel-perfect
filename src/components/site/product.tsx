@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { accentClasses, type Product, type Rating, ON_REQUEST } from "@/data/products";
+import { accentClasses, type Product, type Rating, ON_REQUEST, RATING_MAX } from "@/data/products";
 import { useCompare } from "./compare-context";
 
 export function ColourBadge({ product, className }: { product: Product; className?: string }) {
@@ -20,9 +20,9 @@ function RatingRow({ label, value }: { label: string; value: Rating }) {
       {value === null ? (
         <span className="text-muted-foreground/70 italic">Rating to be published</span>
       ) : (
-        <span className="flex gap-1" aria-label={`${value} out of 5`}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className={cn("h-1.5 w-4 rounded-full", i < value ? "bg-[var(--acc,var(--foreground))]" : "bg-border")} />
+        <span className="flex shrink-0 gap-1" aria-label={`${value} out of ${RATING_MAX}`}>
+          {Array.from({ length: RATING_MAX }).map((_, i) => (
+            <span key={i} className={cn("h-1.5 w-3 rounded-full", i < value ? "bg-foreground" : "bg-border")} />
           ))}
         </span>
       )}
@@ -74,7 +74,7 @@ export const onAccent: Record<Product["slug"], string> = {
 export function ProductSwatch({ product, className, large = false }: { product: Product; className?: string; large?: boolean }) {
   const a = accentClasses[product.slug];
   return (
-    <div className={cn("grain relative overflow-hidden", a.bg, onAccent[product.slug], className)}>
+    <div className={cn("grain @container relative overflow-hidden", a.bg, onAccent[product.slug], className)}>
       <img src={product.textureImage} alt="" aria-hidden width={1280} height={1280} loading="lazy" className="absolute inset-0 h-full w-full scale-105 object-cover opacity-30 mix-blend-multiply transition-transform duration-[1.6s] ease-out group-hover:scale-115" />
       {/* Rebound curves */}
       <svg aria-hidden viewBox="0 0 400 500" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-40">
@@ -87,7 +87,7 @@ export function ProductSwatch({ product, className, large = false }: { product: 
           <span className="text-xs font-bold tracking-widest opacity-75">{product.densityCategory}</span>
         </div>
         <div>
-          <p className={cn("font-extralight leading-[0.85] tracking-[-0.05em]", large ? "text-[clamp(4.5rem,13vw,11rem)]" : "text-[clamp(3.2rem,6vw,4.6rem)]")}>{product.name}</p>
+          <p className={cn("font-extralight leading-none tracking-normal", large ? "text-[min(18cqw,9rem)]" : "text-[min(17cqw,4.6rem)]")}>{product.name}</p>
           <p className="mt-4 flex items-baseline gap-2 text-sm font-semibold opacity-80">
             <span className={cn("font-light tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
           </p>
@@ -104,7 +104,7 @@ export function ProductCard({ product }: { product: Product }) {
         <ProductSwatch product={product} className="aspect-[3/4]" />
       </Link>
       <div className="flex flex-1 flex-col gap-4 pt-5">
-        <div className="flex items-baseline justify-between gap-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="text-2xl font-light tracking-tight md:text-3xl">{product.name}</h3>
           <span className="nav-caps text-muted-foreground">{product.thicknessMm} mm · {product.densityCategory}</span>
         </div>

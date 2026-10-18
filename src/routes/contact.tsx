@@ -23,7 +23,9 @@ function ContactPage() {
           {(company.email || company.phone) && (
             <div className="space-y-1 text-sm">
               {company.email && <p><a className="underline" href={`mailto:${company.email}`}>{company.email}</a></p>}
-              {company.phone && <p>{company.phone}</p>}
+              {company.phone && <p><a className="underline" href={`tel:${company.phone.replace(/\s/g, "")}`}>{company.phone}</a></p>}
+              {company.address && <p className="pt-3 leading-relaxed">{company.address}</p>}
+              <p className="pt-3"><a className="underline" href={company.website} target="_blank" rel="noreferrer">www.sarvafoam.com.au</a></p>
             </div>
           )}
         </aside>

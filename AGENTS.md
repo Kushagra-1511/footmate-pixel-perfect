@@ -14,3 +14,5 @@
 - Unverified specs/ratings/documents stay `null` and render "Available on request" — the brief forbids invented data.
 - Form submissions go through the `submitEnquiry` server function into the `enquiries` table (RLS on, no client policies) — leads are never publicly readable.
 - Finder recommendation rules live in `src/lib/recommend.ts` and are covered by `src/test/recommend.test.ts`.
+- Keep existing product slugs and accent-token keys stable when display names change — preserves saved comparisons, enquiry identifiers and existing product/sample links.
+- The rating scale is defined with product data and shared by product displays and comparisons — prevents different pages from presenting inconsistent booklet scores.

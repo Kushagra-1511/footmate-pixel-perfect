@@ -48,6 +48,11 @@ export function SiteFooter() {
             <li><Link to="/trade" className="text-ink-foreground/80 hover:text-ink-foreground">Trade enquiry</Link></li>
             <li><Link to="/contact" className="text-ink-foreground/80 hover:text-ink-foreground">Contact our team</Link></li>
           </ul>
+          <address className="mt-6 space-y-2 text-sm not-italic text-ink-foreground/80">
+            {company.phone && <p><a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-ink-foreground">{company.phone}</a></p>}
+            {company.email && <p><a href={`mailto:${company.email}`} className="break-all hover:text-ink-foreground">{company.email}</a></p>}
+            {company.address && <p className="leading-relaxed">{company.address}</p>}
+          </address>
         </div>
       </div>
       <div className="border-t border-ink-foreground/10">

@@ -8,7 +8,8 @@ import foamTexture from "@/assets/foam-texture.jpg";
 export type ProductSlug = "spring" | "bounce" | "pulse" | "bloom";
 export type DensityCategory = "HD+" | "UHD";
 export type Thickness = 9 | 11;
-export type Rating = number | null; // out of 5, from the official sample book only
+export const RATING_MAX = 6;
+export type Rating = number | null; // out of RATING_MAX, from the finalised booklet only
 
 export interface ProductDocument {
   kind: "data-sheet" | "installation" | "warranty" | "testing";
@@ -74,13 +75,13 @@ const baseDocs: ProductDocument[] = [
 ];
 
 const sustainability =
-  "Made from recovered polyurethane foam that is processed and rebonded into a new underlay. Verified recycled-content figures will be published when documentation is available.";
+  "Made from post-consumer waste, as stated in the finalised FOOTMATE booklet. Verified recycled-content percentages are available on request.";
 
 export const products: Product[] = [
   {
     id: "fm-spring",
     slug: "spring",
-    name: "Spring",
+    name: "Comfort",
     thicknessMm: 11,
     densityCategory: "HD+",
     colourName: "Teal",
@@ -88,22 +89,22 @@ export const products: Product[] = [
     accentToken: "spring",
     shortDescription: "Balanced everyday performance with excellent cushioning.",
     fullDescription:
-      "SPRING brings a generous 11 mm of cushioning to everyday living spaces. Its HD+ classification balances a soft, welcoming feel underfoot with the support a carpet needs day after day — a dependable all-rounder for the home.",
+      "COMFORT brings a generous 11 mm of cushioning to everyday living spaces. Its HD+ classification balances a soft, welcoming feel underfoot with the support a carpet needs day after day — a dependable all-rounder for the home.",
     productImage: foamTexture,
     textureImage: foamTexture,
-    comfortRating: null,
-    durabilityRating: null,
-    bounceRating: null,
+    comfortRating: 5,
+    durabilityRating: 4,
+    bounceRating: 5,
     keyBenefits: [
-      "Generous 11 mm cushioning profile",
-      "Balanced feel for everyday living",
-      "Helps support carpet underfoot",
-      "Made from recovered polyurethane foam",
+      "Heat insulation",
+      "Lasting durability",
+      "Sound absorption",
+      "Made from post-consumer waste",
     ],
     suitableApplications: [],
     staircaseSuitability: null,
-    thermalInformation: null,
-    soundInformation: null,
+    thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
+    soundInformation: "Sound absorption — booklet feature; acoustic test data available on request",
     technicalSpecifications: baseSpecs(11, "HD+"),
     downloadableDocuments: baseDocs,
     sustainabilityInformation: sustainability,
@@ -112,7 +113,7 @@ export const products: Product[] = [
   {
     id: "fm-bounce",
     slug: "bounce",
-    name: "Bounce",
+    name: "Cosy",
     thicknessMm: 9,
     densityCategory: "HD+",
     colourName: "Lime green",
@@ -120,21 +121,21 @@ export const products: Product[] = [
     accentToken: "bounce",
     shortDescription: "Responsive comfort in a practical profile, including staircase applications.",
     fullDescription:
-      "BOUNCE offers responsive comfort in a practical 9 mm profile. Its HD+ classification and slimmer build make it a considered choice where a neat finish matters — including staircase applications.",
+      "COSY offers responsive comfort in a practical 9 mm profile. Its HD+ classification and slimmer build make it a considered choice where a neat finish matters — including staircase applications.",
     productImage: foamTexture,
     textureImage: foamTexture,
-    comfortRating: null,
-    durabilityRating: null,
-    bounceRating: null,
+    comfortRating: 4,
+    durabilityRating: 4,
+    bounceRating: 4,
     keyBenefits: [
-      "Practical 9 mm profile",
-      "Responsive feel underfoot",
-      "Suited to staircase applications",
-      "Made from recovered polyurethane foam",
+      "Heat insulation",
+      "Ideal for staircases",
+      "Eco friendly — booklet feature",
+      "Made from post-consumer waste",
     ],
     suitableApplications: ["Staircases"],
     staircaseSuitability: true,
-    thermalInformation: null,
+    thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
     soundInformation: null,
     technicalSpecifications: baseSpecs(9, "HD+"),
     downloadableDocuments: baseDocs,
@@ -144,7 +145,7 @@ export const products: Product[] = [
   {
     id: "fm-pulse",
     slug: "pulse",
-    name: "Pulse",
+    name: "Plush",
     thicknessMm: 11,
     densityCategory: "UHD",
     colourName: "Deep purple",
@@ -152,22 +153,22 @@ export const products: Product[] = [
     accentToken: "pulse",
     shortDescription: "Premium cushioning and support for rooms where comfort matters most.",
     fullDescription:
-      "PULSE is the most luxurious expression of the range: a full 11 mm profile in the UHD classification, developed for bedrooms, lounges and the rooms where comfort matters most.",
+      "PLUSH is the most luxurious expression of the range: a full 11 mm profile in the UHD classification, developed for bedrooms, lounges and the rooms where comfort matters most.",
     productImage: foamTexture,
     textureImage: foamTexture,
-    comfortRating: null,
-    durabilityRating: null,
-    bounceRating: null,
+    comfortRating: 5,
+    durabilityRating: 5,
+    bounceRating: 6,
     keyBenefits: [
-      "Premium 11 mm profile",
-      "UHD classification for added support",
-      "Developed for comfort-first rooms",
-      "Made from recovered polyurethane foam",
+      "Heat insulation",
+      "Lasting durability",
+      "Sound absorption",
+      "Made from post-consumer waste",
     ],
     suitableApplications: [],
     staircaseSuitability: null,
-    thermalInformation: null,
-    soundInformation: null,
+    thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
+    soundInformation: "Sound absorption — booklet feature; acoustic test data available on request",
     technicalSpecifications: baseSpecs(11, "UHD"),
     downloadableDocuments: baseDocs,
     sustainabilityInformation: sustainability,
@@ -176,7 +177,7 @@ export const products: Product[] = [
   {
     id: "fm-bloom",
     slug: "bloom",
-    name: "Bloom",
+    name: "Serenity",
     thicknessMm: 9,
     densityCategory: "UHD",
     colourName: "Coral pink",
@@ -184,21 +185,21 @@ export const products: Product[] = [
     accentToken: "bloom",
     shortDescription: "High-density performance in a refined, versatile profile.",
     fullDescription:
-      "BLOOM pairs the UHD classification with a refined 9 mm profile — high-density performance that stays versatile across a wide range of carpet installations.",
+      "SERENITY pairs the UHD classification with a refined 9 mm profile — high-density performance that stays versatile across a wide range of carpet installations.",
     productImage: foamTexture,
     textureImage: foamTexture,
-    comfortRating: null,
-    durabilityRating: null,
-    bounceRating: null,
+    comfortRating: 5,
+    durabilityRating: 5,
+    bounceRating: 5,
     keyBenefits: [
-      "Refined 9 mm profile",
-      "UHD classification for added support",
-      "Versatile across installations",
-      "Made from recovered polyurethane foam",
+      "Heat insulation",
+      "Ideal for staircases",
+      "Eco friendly — booklet feature",
+      "Made from post-consumer waste",
     ],
-    suitableApplications: [],
-    staircaseSuitability: null,
-    thermalInformation: null,
+    suitableApplications: ["Staircases"],
+    staircaseSuitability: true,
+    thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
     soundInformation: null,
     technicalSpecifications: baseSpecs(9, "UHD"),
     downloadableDocuments: baseDocs,

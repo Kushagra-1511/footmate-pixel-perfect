@@ -13,7 +13,7 @@ export const Route = createFileRoute("/trade")({
 const audiences = [
   { icon: Store, t: "Retailers", d: "A clear four-product story that's easy to present and easy for customers to choose from." },
   { icon: Truck, t: "Distributors", d: "Talk to us about regional supply and distribution opportunities across Australia." },
-  { icon: Hammer, t: "Installers", d: "Practical 9 mm and 11 mm profiles, with a staircase-suited option in BOUNCE." },
+  { icon: Hammer, t: "Installers", d: "Practical 9 mm and 11 mm profiles, with staircase-suited options in Cosy and Serenity." },
   { icon: Ruler, t: "Architects & interior designers", d: "Product classifications and specification support, with documentation added as it's verified." },
   { icon: Building2, t: "Builders & developers", d: "A consistent underlay range for multi-dwelling and residential projects." },
   { icon: Briefcase, t: "Commercial flooring buyers", d: "Discuss volume requirements and the right product for your project." },
