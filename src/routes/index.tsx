@@ -57,7 +57,7 @@ function Home() {
 
       {/* Full-bleed hero */}
       <section className="relative isolate h-[calc(100svh-6.9rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
-        <Parallax speed={-0.12} className="absolute inset-0 -z-10">
+        <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
           <img src={hero} alt="Sunlit living room with soft neutral carpet" width={1920} height={1152} fetchPriority="high" className="h-[112%] w-full object-cover" />
         </Parallax>
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/75 via-charcoal/10 to-transparent" />
