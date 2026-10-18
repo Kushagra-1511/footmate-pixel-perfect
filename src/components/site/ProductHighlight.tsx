@@ -1,21 +1,26 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { products, accentClasses } from "@/data/products";
-import { ProductSwatch } from "./product";
+import { onAccent } from "./product";
 
+/** Full-bleed product showcase — the whole section takes on the selected product's colour. */
 export function ProductHighlight() {
   const [i, setI] = useState(0);
   const p = products[i] ?? products[0]!;
   const a = accentClasses[p.slug];
+  const ink = onAccent[p.slug];
   return (
-    <section className="border-y border-border bg-card" aria-label="Product spotlight">
-      <div className="grid lg:grid-cols-2">
-        <div key={p.slug} className="animate-in fade-in duration-700">
-          <ProductSwatch product={p} large className="aspect-square lg:aspect-auto lg:h-full lg:min-h-[640px]" />
-        </div>
-        <div className="flex flex-col justify-between gap-12 p-8 md:p-16">
+    <section
+      aria-label="Product spotlight"
+      style={{ backgroundColor: p.accentColour }}
+      className={cn("grain overflow-hidden transition-[background-color,color] duration-700", ink)}
+    >
+      <img src={p.textureImage} alt="" aria-hidden loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-multiply" />
+      <div className="container-site relative z-[2] py-16 md:py-24">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
+          <p className="eyebrow text-current opacity-80">The collection — 0{i + 1} / 04</p>
           <div role="tablist" aria-label="Choose a product" className="flex flex-wrap gap-2">
             {products.map((x, idx) => (
               <button
@@ -24,34 +29,46 @@ export function ProductHighlight() {
                 aria-selected={idx === i}
                 onClick={() => setI(idx)}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-all",
-                  idx === i ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/50",
+                  "inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-bold transition-all duration-500",
+                  idx === i ? "border-charcoal bg-charcoal text-charcoal-foreground" : "border-current/30 hover:border-current",
                 )}
               >
-                <span className={cn("h-2.5 w-2.5 rounded-full", accentClasses[x.slug].bg)} />
+                <span className={cn("h-2.5 w-2.5 rounded-full ring-2 ring-charcoal-foreground/60", accentClasses[x.slug].bg)} />
                 {x.name}
               </button>
             ))}
           </div>
-          <div key={p.slug + "t"} className="animate-in fade-in slide-in-from-bottom-2 duration-700">
-            <p className="eyebrow">Spotlight</p>
-            <h2 className="display-lg mt-4">FOOTMATE {p.name}</h2>
-            <div className="mt-6 flex gap-8 border-y border-border py-5">
-              <div><p className="text-xs text-muted-foreground">Thickness</p><p className="text-2xl font-bold">{p.thicknessMm} mm</p></div>
-              <div><p className="text-xs text-muted-foreground">Classification</p><p className="text-2xl font-bold">{p.densityCategory}</p></div>
-              <div><p className="text-xs text-muted-foreground">Colour</p><p className="text-2xl font-bold">{p.colourName}</p></div>
-            </div>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{p.fullDescription}</p>
+        </div>
+
+        <h2 key={p.slug} className="display-product rise mt-10 select-none md:mt-6" aria-live="polite">
+          {p.name}
+        </h2>
+
+        <div key={p.slug + "b"} className="rise mt-10 grid gap-10 border-t-2 border-current/25 pt-10 [animation-delay:150ms] lg:grid-cols-12">
+          <dl className="grid grid-cols-3 gap-6 lg:col-span-5">
+            <div><dt className="text-xs font-semibold opacity-70">Thickness</dt><dd className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">{p.thicknessMm}<span className="text-lg">mm</span></dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Class</dt><dd className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">{p.densityCategory}</dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Colour</dt><dd className="mt-1 text-xl font-extrabold md:text-2xl">{p.colourName}</dd></div>
+          </dl>
+          <div className="lg:col-span-7">
+            <p className="max-w-2xl text-lg font-medium leading-relaxed md:text-xl">{p.fullDescription}</p>
             <ul className="mt-6 grid gap-2 sm:grid-cols-2">
               {p.keyBenefits.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-sm font-medium">
-                  <span className={cn("h-1.5 w-1.5 rounded-full", a.bg)} />{b}
+                <li key={b} className="flex items-center gap-3 text-sm font-semibold">
+                  <span className="h-1.5 w-1.5 rounded-full bg-current" />{b}
                 </li>
               ))}
             </ul>
-            <Button asChild className="mt-10" size="lg">
-              <Link to="/products/$slug" params={{ slug: p.slug }}>Discover {p.name}</Link>
-            </Button>
+            <Link
+              to="/products/$slug"
+              params={{ slug: p.slug }}
+              className="group mt-10 inline-flex items-center gap-3 rounded-full bg-charcoal py-2 pl-6 pr-2 text-sm font-bold text-charcoal-foreground"
+            >
+              Discover {p.name}
+              <span className={cn("grid h-9 w-9 place-items-center rounded-full transition-transform duration-500 group-hover:rotate-45", a.bg, ink)}>
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
+            </Link>
           </div>
         </div>
       </div>
