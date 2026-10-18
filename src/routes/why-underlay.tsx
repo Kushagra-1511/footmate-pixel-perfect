@@ -59,20 +59,6 @@ function WhyPage() {
         </div>
         <div className="lg:col-span-7 lg:pl-8">
           <SectionHeading eyebrow="Thickness vs density" title="Two dials, not one." intro="Thickness sets how much cushion there is. Density classification sets how firmly it's bonded. FOOTMATE gives you both combinations." />
-          <div className="mt-10 grid grid-cols-2 border-l border-t border-border text-sm">
-            <div className="border-b border-r border-border p-5" />
-            <div className="border-b border-r border-border p-5 font-bold">HD+</div>
-            <div className="hidden" />
-            {[
-              ["9 mm", "Bounce", "Bloom"],
-              ["11 mm", "Spring", "Pulse"],
-            ].map(([t, hd, uhd]) => (
-              <div key={t} className="contents">
-                <div className="border-b border-r border-border p-5 font-bold">{t}</div>
-                <div className="border-b border-r border-border p-5">{hd}</div>
-              </div>
-            ))}
-          </div>
           <table className="mt-10 w-full border-collapse text-sm">
             <thead><tr><th className="border border-border p-4 text-left" /><th className="border border-border p-4 text-left">HD+</th><th className="border border-border p-4 text-left">UHD</th></tr></thead>
             <tbody>

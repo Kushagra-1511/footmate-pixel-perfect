@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WhyUnderlayRouteImport } from './routes/why-underlay'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as ProductsCompareRouteImport } from './routes/products.compare'
@@ -17,6 +18,11 @@ import { Route as ProductsCompareRouteImport } from './routes/products.compare'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhyUnderlayRoute = WhyUnderlayRouteImport.update({
+  id: '/why-underlay',
+  path: '/why-underlay',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
@@ -37,12 +43,14 @@ const ProductsCompareRoute = ProductsCompareRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/why-underlay': typeof WhyUnderlayRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/why-underlay': typeof WhyUnderlayRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
   '/products': typeof ProductsIndexRoute
@@ -50,20 +58,38 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/why-underlay': typeof WhyUnderlayRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/products/$slug' | '/products/compare' | '/products/'
+  fullPaths:
+    | '/'
+    | '/why-underlay'
+    | '/products/$slug'
+    | '/products/compare'
+    | '/products/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/products/$slug' | '/products/compare' | '/products'
-  id: '__root__' | '/' | '/products/$slug' | '/products/compare' | '/products/'
+  to:
+    | '/'
+    | '/why-underlay'
+    | '/products/$slug'
+    | '/products/compare'
+    | '/products'
+  id:
+    | '__root__'
+    | '/'
+    | '/why-underlay'
+    | '/products/$slug'
+    | '/products/compare'
+    | '/products/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  WhyUnderlayRoute: typeof WhyUnderlayRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   ProductsCompareRoute: typeof ProductsCompareRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
@@ -76,6 +102,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/why-underlay': {
+      id: '/why-underlay'
+      path: '/why-underlay'
+      fullPath: '/why-underlay'
+      preLoaderRoute: typeof WhyUnderlayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/': {
@@ -104,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  WhyUnderlayRoute: WhyUnderlayRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   ProductsCompareRoute: ProductsCompareRoute,
   ProductsIndexRoute: ProductsIndexRoute,
