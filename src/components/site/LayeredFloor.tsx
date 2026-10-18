@@ -11,7 +11,7 @@ export function LayeredFloor({ accentClass = "bg-pulse", className }: { accentCl
   ];
   return (
     <div className={cn("relative", className)}>
-      <div className="relative mx-auto aspect-square max-w-lg [perspective:1400px]">
+      <div className="relative mx-auto aspect-square max-w-lg overflow-hidden [perspective:1400px]">
         <div className="absolute inset-0 [transform:rotateX(55deg)_rotateZ(-38deg)] [transform-style:preserve-3d]">
           <div className="absolute inset-[18%] translate-y-[22%] bg-stone shadow-lift" />
           <div className={cn("absolute inset-[18%] translate-y-[2%] overflow-hidden shadow-lift", accentClass)}>
