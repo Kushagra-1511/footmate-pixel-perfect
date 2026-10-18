@@ -87,9 +87,9 @@ export function ProductSwatch({ product, className, large = false }: { product: 
           <span className="text-xs font-bold tracking-widest opacity-75">{product.densityCategory}</span>
         </div>
         <div>
-          <p className={cn("font-extrabold leading-[0.8] tracking-[-0.07em]", large ? "text-[clamp(4.5rem,13vw,11rem)]" : "text-[clamp(3.2rem,6vw,4.6rem)]")}>{product.name}</p>
+          <p className={cn("font-light leading-[0.8] tracking-[-0.07em]", large ? "text-[clamp(4.5rem,13vw,11rem)]" : "text-[clamp(3.2rem,6vw,4.6rem)]")}>{product.name}</p>
           <p className="mt-4 flex items-baseline gap-2 text-sm font-semibold opacity-80">
-            <span className={cn("font-extrabold tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
+            <span className={cn("font-light tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
           </p>
         </div>
       </div>
@@ -109,7 +109,7 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="text-xs font-semibold text-muted-foreground">{product.thicknessMm} mm</span>
         </div>
         <div>
-          <h3 className="text-3xl font-extrabold tracking-tight">{product.name}</h3>
+          <h3 className="text-3xl font-light tracking-tight">{product.name}</h3>
           <p className="mt-1 text-sm font-semibold">{product.thicknessMm} mm · {product.densityCategory} classification</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{product.shortDescription}</p>
         </div>

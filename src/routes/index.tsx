@@ -79,7 +79,7 @@ function Home() {
       <section aria-label="The FOOTMATE range" className="border-y border-border bg-background py-6">
         <Marquee>
           {products.map((p) => (
-            <span key={p.slug} className="flex items-center gap-8 pr-8 text-6xl font-extrabold tracking-[-0.06em] md:text-8xl">
+            <span key={p.slug} className="flex items-center gap-8 pr-8 text-6xl font-light tracking-[-0.06em] md:text-8xl">
               {p.name}
               <span className={`h-6 w-6 rounded-full md:h-9 md:w-9 bg-${p.accentToken}`} />
               <span className="type-outline text-foreground/70">{p.thicknessMm}mm {p.densityCategory}</span>
@@ -115,18 +115,18 @@ function Home() {
             <p className="eyebrow text-charcoal-foreground/60">The FOOTMATE advantage</p>
             <h2 className="display-lg mt-5">Felt in every room. <span className="text-charcoal-foreground/40">Noticed with every step.</span></h2>
             <Parallax speed={0.08} className="mt-12 hidden lg:block">
-              <img src={foam} alt="Macro view of rebonded polyurethane foam" loading="lazy" width={1280} height={1280} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
+              <img src={foam} alt="Macro view of rebonded polyurethane foam" loading="lazy" width={1280} height={1280} className="aspect-[4/3] w-full object-cover" />
             </Parallax>
           </div>
           <ol className="lg:col-span-7">
             {advantages.map((a, i) => (
               <Reveal key={a.title} delay={i * 80}>
                 <li className="group grid grid-cols-[auto_1fr] items-start gap-6 border-t border-charcoal-foreground/15 py-8 md:gap-10 md:py-10">
-                  <span className="text-5xl font-extrabold tracking-tighter text-charcoal-foreground/25 transition-colors duration-500 group-hover:text-bounce md:text-7xl">0{i + 1}</span>
+                  <span className="text-5xl font-light tracking-tighter text-charcoal-foreground/25 transition-colors duration-500 group-hover:text-bounce md:text-7xl">0{i + 1}</span>
                   <div>
                     <div className="flex items-center gap-4">
                       <a.icon className="h-6 w-6 text-charcoal-foreground/70" strokeWidth={1.4} aria-hidden />
-                      <h3 className="text-2xl font-extrabold tracking-tight md:text-3xl">{a.title}</h3>
+                      <h3 className="text-2xl font-light tracking-tight md:text-3xl">{a.title}</h3>
                     </div>
                     <p className="mt-3 max-w-md leading-relaxed text-charcoal-foreground/65">{a.text}</p>
                   </div>
@@ -185,7 +185,7 @@ function Home() {
                 <li className="rounded-2xl bg-card/90 p-5 shadow-soft backdrop-blur">
                   <span className={`block h-2 w-8 rounded-full bg-${products[i]!.accentToken}`} />
                   <span className="mt-4 block text-xs font-semibold text-muted-foreground">Step 0{i + 1}</span>
-                  <p className="mt-1 font-extrabold">{s}</p>
+                  <p className="mt-1 font-light">{s}</p>
                 </li>
               </Reveal>
             ))}
@@ -200,11 +200,11 @@ function Home() {
           <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {trade.map((t, i) => (
               <Reveal key={t.title} delay={i * 80}>
-                <div style={{ ["--acc" as string]: products[i]!.accentColour }} className="lift-accent group h-full rounded-2xl bg-card p-8">
+                <div style={{ ["--acc" as string]: products[i]!.accentColour }} className="lift-accent group h-full bg-card p-8">
                   <span className={`grid h-12 w-12 place-items-center rounded-full bg-${products[i]!.accentToken}/20 transition-colors duration-500 group-hover:bg-${products[i]!.accentToken}`}>
                     <t.icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
                   </span>
-                  <h3 className="mt-8 text-xl font-extrabold">{t.title}</h3>
+                  <h3 className="mt-8 text-xl font-light">{t.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
                 </div>
               </Reveal>

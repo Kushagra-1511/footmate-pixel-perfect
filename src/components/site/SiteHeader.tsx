@@ -13,19 +13,19 @@ export function Logo({ className = "h-8" }: { className?: string }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur-md">
       <div className="container-site flex h-18 items-center justify-between gap-6">
         <Link to="/" aria-label="FOOTMATE home" className="shrink-0">
           <Logo className="h-8 md:h-9" />
         </Link>
 
         <nav aria-label="Main" className="hidden xl:block">
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-7">
             {mainNav.slice(1).map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="text-[0.82rem] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className="nav-caps text-muted-foreground transition-colors hover:text-foreground"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
@@ -61,7 +61,7 @@ export function SiteHeader() {
                       <Link
                         to={item.to}
                         onClick={() => setOpen(false)}
-                        className="block py-3 text-2xl font-semibold tracking-tight text-muted-foreground hover:text-foreground"
+                        className="block py-3 text-3xl font-light tracking-tight text-muted-foreground hover:text-foreground"
                         activeProps={{ className: "text-foreground" }}
                         activeOptions={{ exact: item.to === "/" }}
                       >

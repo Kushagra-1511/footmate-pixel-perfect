@@ -46,9 +46,9 @@ export function ProductHighlight() {
 
         <div key={p.slug + "b"} className="rise mt-10 grid gap-10 border-t-2 border-current/25 pt-10 [animation-delay:150ms] lg:grid-cols-12">
           <dl className="grid grid-cols-3 gap-6 lg:col-span-5">
-            <div><dt className="text-xs font-semibold opacity-70">Thickness</dt><dd className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">{p.thicknessMm}<span className="text-lg">mm</span></dd></div>
-            <div><dt className="text-xs font-semibold opacity-70">Class</dt><dd className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">{p.densityCategory}</dd></div>
-            <div><dt className="text-xs font-semibold opacity-70">Colour</dt><dd className="mt-1 text-xl font-extrabold md:text-2xl">{p.colourName}</dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Thickness</dt><dd className="mt-1 text-4xl font-light tracking-tight md:text-5xl">{p.thicknessMm}<span className="text-lg">mm</span></dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Class</dt><dd className="mt-1 text-4xl font-light tracking-tight md:text-5xl">{p.densityCategory}</dd></div>
+            <div><dt className="text-xs font-semibold opacity-70">Colour</dt><dd className="mt-1 text-xl font-light md:text-2xl">{p.colourName}</dd></div>
           </dl>
           <div className="lg:col-span-7">
             <p className="max-w-2xl text-lg font-medium leading-relaxed md:text-xl">{p.fullDescription}</p>
