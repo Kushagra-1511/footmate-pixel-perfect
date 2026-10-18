@@ -7,7 +7,7 @@ import { ProductSwatch } from "./product";
 
 export function ProductHighlight() {
   const [i, setI] = useState(0);
-  const p = products[i];
+  const p = products[i] ?? products[0]!;
   const a = accentClasses[p.slug];
   return (
     <section className="border-y border-border bg-card" aria-label="Product spotlight">

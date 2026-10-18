@@ -48,13 +48,15 @@ export const submitEnquiry = createServerFn({ method: "POST" })
     const { website: _w, ...row } = data;
     const clean = Object.fromEntries(
       Object.entries(row).map(([k, v]) => [k, v === "" ? null : v]),
-    ) as typeof row;
+    ) as Record<string, unknown>;
     const { error } = await supabaseAdmin.from("enquiries").insert({
+      name: data.name,
+      enquiry_type: data.enquiry_type,
       ...clean,
       email: data.email.toLowerCase(),
       products: data.products,
       consent: true,
-    });
+    } as never);
     if (error) {
       console.error("enquiry insert failed", error);
       return { ok: false as const, error: "We couldn't save your enquiry. Please try again." };
