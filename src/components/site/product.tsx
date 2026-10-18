@@ -22,7 +22,7 @@ function RatingRow({ label, value }: { label: string; value: Rating }) {
       ) : (
         <span className="flex gap-1" aria-label={`${value} out of 5`}>
           {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className={cn("h-1.5 w-4 rounded-full", i < value ? "bg-foreground" : "bg-border")} />
+            <span key={i} className={cn("h-1.5 w-4 rounded-full", i < value ? "bg-[var(--acc,var(--foreground))]" : "bg-border")} />
           ))}
         </span>
       )}
@@ -62,18 +62,34 @@ export function CompareToggle({ product, className }: { product: Product; classN
   );
 }
 
-/** Abstract layered swatch in product colour — used in place of product photography until official artwork is supplied. */
+/** Text colour that reads well on each product's accent field. */
+export const onAccent: Record<Product["slug"], string> = {
+  spring: "text-charcoal",
+  bounce: "text-charcoal",
+  pulse: "text-charcoal-foreground",
+  bloom: "text-charcoal",
+};
+
+/** Layered colour field in product colour — used in place of product photography until official artwork is supplied. */
 export function ProductSwatch({ product, className, large = false }: { product: Product; className?: string; large?: boolean }) {
   const a = accentClasses[product.slug];
   return (
-    <div className={cn("relative overflow-hidden", a.bg, className)}>
-      <img src={product.textureImage} alt="" aria-hidden width={1280} height={1280} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-multiply" />
-      <div className="absolute inset-0 flex flex-col justify-between p-6">
-        <span className="eyebrow text-foreground/70">FOOTMATE</span>
+    <div className={cn("grain relative overflow-hidden", a.bg, onAccent[product.slug], className)}>
+      <img src={product.textureImage} alt="" aria-hidden width={1280} height={1280} loading="lazy" className="absolute inset-0 h-full w-full scale-105 object-cover opacity-30 mix-blend-multiply transition-transform duration-[1.6s] ease-out group-hover:scale-115" />
+      {/* Rebound curves */}
+      <svg aria-hidden viewBox="0 0 400 500" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-40">
+        <path d="M0 380 C 100 300, 300 300, 400 380 L400 500 L0 500Z" fill="currentColor" opacity="0.12" />
+        <path d="M0 430 C 120 370, 280 370, 400 430 L400 500 L0 500Z" fill="currentColor" opacity="0.18" />
+      </svg>
+      <div className="absolute inset-0 z-[2] flex flex-col justify-between p-6 md:p-8">
+        <div className="flex items-start justify-between">
+          <span className="eyebrow text-current opacity-75">FOOTMATE</span>
+          <span className="text-xs font-bold tracking-widest opacity-75">{product.densityCategory}</span>
+        </div>
         <div>
-          <p className={cn("font-bold leading-none tracking-tighter text-foreground/90", large ? "text-7xl md:text-8xl" : "text-5xl")}>{product.name}</p>
-          <p className="mt-3 text-sm font-semibold text-foreground/75">
-            {product.thicknessMm} mm · {product.densityCategory}
+          <p className={cn("font-extrabold leading-[0.8] tracking-[-0.07em]", large ? "text-[clamp(4.5rem,13vw,11rem)]" : "text-[clamp(3.2rem,6vw,4.6rem)]")}>{product.name}</p>
+          <p className="mt-4 flex items-baseline gap-2 text-sm font-semibold opacity-80">
+            <span className={cn("font-extrabold tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
           </p>
         </div>
       </div>
@@ -83,17 +99,17 @@ export function ProductSwatch({ product, className, large = false }: { product: 
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="lift group flex flex-col bg-card shadow-soft">
+    <article style={{ ["--acc" as string]: product.accentColour }} className="lift-accent group flex h-full flex-col overflow-hidden bg-card">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block" aria-label={`View ${product.name}`}>
         <ProductSwatch product={product} className="aspect-[4/5]" />
       </Link>
       <div className="flex flex-1 flex-col gap-5 p-6">
         <div className="flex items-center justify-between">
           <ColourBadge product={product} />
-          <span className="text-xs font-semibold text-muted-foreground">{product.densityCategory}</span>
+          <span className="text-xs font-semibold text-muted-foreground">{product.thicknessMm} mm</span>
         </div>
         <div>
-          <h3 className="text-2xl font-bold">{product.name}</h3>
+          <h3 className="text-3xl font-extrabold tracking-tight">{product.name}</h3>
           <p className="mt-1 text-sm font-semibold">{product.thicknessMm} mm · {product.densityCategory} classification</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{product.shortDescription}</p>
         </div>
@@ -101,7 +117,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-5">
           <CompareToggle product={product} />
           <Link to="/products/$slug" params={{ slug: product.slug }} className="inline-flex items-center gap-1 text-sm font-semibold">
-            View product <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            View product <span className={cn("grid h-7 w-7 place-items-center rounded-full transition-transform duration-500 group-hover:rotate-45", accentClasses[product.slug].bg, onAccent[product.slug])}><ArrowUpRight className="h-4 w-4" /></span>
           </Link>
         </div>
       </div>
