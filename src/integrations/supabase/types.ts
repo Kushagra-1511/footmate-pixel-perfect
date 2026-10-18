@@ -14,7 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enquiries: {
+        Row: {
+          business_type: string | null
+          company: string | null
+          consent: boolean
+          created_at: string
+          customer_type: string | null
+          delivery_postcode: string | null
+          delivery_suburb: string | null
+          email: string
+          enquiry_category: string | null
+          enquiry_type: string
+          estimated_requirement: string | null
+          id: string
+          intended_application: string | null
+          message: string | null
+          name: string
+          phone: string | null
+          products: string[]
+          role: string | null
+          sample_requested: boolean
+          state: string | null
+          status: string
+        }
+        Insert: {
+          business_type?: string | null
+          company?: string | null
+          consent?: boolean
+          created_at?: string
+          customer_type?: string | null
+          delivery_postcode?: string | null
+          delivery_suburb?: string | null
+          email: string
+          enquiry_category?: string | null
+          enquiry_type: string
+          estimated_requirement?: string | null
+          id?: string
+          intended_application?: string | null
+          message?: string | null
+          name: string
+          phone?: string | null
+          products?: string[]
+          role?: string | null
+          sample_requested?: boolean
+          state?: string | null
+          status?: string
+        }
+        Update: {
+          business_type?: string | null
+          company?: string | null
+          consent?: boolean
+          created_at?: string
+          customer_type?: string | null
+          delivery_postcode?: string | null
+          delivery_suburb?: string | null
+          email?: string
+          enquiry_category?: string | null
+          enquiry_type?: string
+          estimated_requirement?: string | null
+          id?: string
+          intended_application?: string | null
+          message?: string | null
+          name?: string
+          phone?: string | null
+          products?: string[]
+          role?: string | null
+          sample_requested?: boolean
+          state?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
