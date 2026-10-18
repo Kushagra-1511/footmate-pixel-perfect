@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
   head: () =>
     seo(
       "Carpet Underlay Australia — Luxury from the first step",
-      "FOOTMATE recycled polyurethane foam carpet underlay. Four distinct products — Spring, Bounce, Pulse and Bloom — for comfort and lasting performance beneath Australian floors.",
+      "FOOTMATE recycled polyurethane foam carpet underlay. Four distinct products — Comfort, Cosy, Plush and Serenity — for comfort and lasting performance beneath Australian floors.",
       "/",
     ),
   component: Home,
@@ -32,7 +32,7 @@ const advantages = [
 const trade = [
   { icon: Store, title: "Flooring retailers", text: "A clearly differentiated four-product range that's easy to explain at the counter." },
   { icon: Truck, title: "Distributors", text: "Discuss supply and regional distribution opportunities with our team." },
-  { icon: Hammer, title: "Installers", text: "Practical 9 mm and 11 mm profiles, including a staircase-suited option." },
+  { icon: Hammer, title: "Installers", text: "Practical 9 mm and 11 mm profiles, including two staircase-suited options." },
   { icon: Ruler, title: "Architects & specifiers", text: "Clear product classifications and documentation as it is published." },
 ];
 
@@ -127,7 +127,7 @@ function Home() {
         <div className="grid gap-6 md:grid-cols-12">
           <Reveal className="md:col-span-5 md:pt-32">
             <div className="zoom-tile"><img src={stairs} alt="Carpeted staircase" loading="lazy" className="aspect-[4/5] w-full object-cover" /></div>
-            <p className="nav-caps mt-4 text-muted-foreground">Stairs — consider Bounce</p>
+            <p className="nav-caps mt-4 text-muted-foreground">Stairs — Cosy & Serenity</p>
           </Reveal>
           <Reveal delay={120} className="md:col-span-7">
             <div className="zoom-tile"><img src={hero} alt="Living room with soft carpet" loading="lazy" className="aspect-[4/3] w-full object-cover" /></div>

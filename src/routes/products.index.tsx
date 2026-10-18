@@ -12,7 +12,7 @@ export const Route = createFileRoute("/products/")({
   head: () =>
     seo(
       "The FOOTMATE Range — Rebond Foam Carpet Underlay",
-      "Browse and compare FOOTMATE Spring, Bounce, Pulse and Bloom — high-density recycled polyurethane carpet underlay in 9 mm and 11 mm, HD+ and UHD.",
+      "Browse and compare FOOTMATE Comfort, Cosy, Plush and Serenity — high-density recycled polyurethane carpet underlay in 9 mm and 11 mm, HD+ and UHD.",
       "/products",
     ),
   component: ProductsPage,

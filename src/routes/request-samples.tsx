@@ -8,7 +8,7 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/request-samples")({
   validateSearch: z.object({ product: z.enum(["spring", "bounce", "pulse", "bloom"]).optional() }),
-  head: () => seo("Request FOOTMATE Samples", "Request samples of FOOTMATE Spring, Bounce, Pulse or Bloom carpet underlay — for homeowners and trade professionals.", "/request-samples"),
+  head: () => seo("Request FOOTMATE Samples", "Request samples of FOOTMATE Comfort, Cosy, Plush or Serenity carpet underlay — for homeowners and trade professionals.", "/request-samples"),
   component: SamplesPage,
 });
 

@@ -2,16 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, PageHero } from "@/components/site/primitives";
 import { useCompare } from "@/components/site/compare-context";
-import { accentClasses, products, UNVERIFIED, type Product, type Rating } from "@/data/products";
+import { accentClasses, products, UNVERIFIED, RATING_MAX, type Product, type Rating } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/products/compare")({
-  head: () => seo("Compare FOOTMATE Carpet Underlay", "Compare FOOTMATE Spring, Bounce, Pulse and Bloom side by side — thickness, density classification, suitability and documentation.", "/products/compare"),
+  head: () => seo("Compare FOOTMATE Carpet Underlay", "Compare FOOTMATE Comfort, Cosy, Plush and Serenity side by side — thickness, density classification, suitability and documentation.", "/products/compare"),
   component: ComparePage,
 });
 
-const r = (v: Rating) => (v === null ? UNVERIFIED : `${v} / 5`);
+const r = (v: Rating) => (v === null ? UNVERIFIED : `${v} / ${RATING_MAX}`);
 const rows: { label: string; get: (p: Product) => string }[] = [
   { label: "Thickness", get: (p) => `${p.thicknessMm} mm` },
   { label: "Density category", get: (p) => p.densityCategory },
