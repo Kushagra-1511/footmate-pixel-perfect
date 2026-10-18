@@ -54,7 +54,7 @@ function Home() {
         </Parallax>
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/75 via-charcoal/10 to-transparent" />
         <div className="container-site flex h-full flex-col justify-end pb-12 md:pb-16">
-          <p className="nav-caps rise text-charcoal-foreground/80">FOOTMATE by Sarva Australia</p>
+          <p className="nav-caps rise inline-flex w-fit bg-charcoal-foreground/90 px-4 py-2 text-charcoal">FOOTMATE by Sarva Australia</p>
           <h1 className="display-mega rise mt-6 max-w-5xl [animation-delay:120ms]">Luxury from the first step.</h1>
           <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
             <TextLink to="/products" light>Explore the range</TextLink>
