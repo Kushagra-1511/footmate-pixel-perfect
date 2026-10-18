@@ -27,6 +27,7 @@ export function FootmateFinder() {
   const [answers, setAnswers] = useState<Partial<FinderAnswers>>({});
   const { setAll } = useCompare();
   const done = step >= questions.length;
+  const q = questions[Math.min(step, questions.length - 1)]!;
   const result = done ? recommend(answers as FinderAnswers) : null;
 
   return (
@@ -43,17 +44,17 @@ export function FootmateFinder() {
       {!done && (
         <div key={step} className="animate-in fade-in slide-in-from-bottom-2 duration-500">
           <p className="text-sm text-muted-foreground">Question {step + 1} of {questions.length}</p>
-          <h3 className="mt-2 text-3xl font-bold md:text-4xl">{questions[step].title}</h3>
+          <h3 className="mt-2 text-3xl font-bold md:text-4xl">{q.title}</h3>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {questions[step].options.map((o) => (
+            {q.options.map((o) => (
               <button
                 key={o.value}
                 type="button"
                 onClick={() => {
-                  setAnswers({ ...answers, [questions[step].key]: o.value });
+                  setAnswers({ ...answers, [q.key]: o.value });
                   setStep(step + 1);
                 }}
-                className={cn("h-16 border border-border px-5 text-left font-semibold transition-all hover:border-foreground hover:bg-background", answers[questions[step].key] === o.value && "border-foreground")}
+                className={cn("h-16 border border-border px-5 text-left font-semibold transition-all hover:border-foreground hover:bg-background", answers[q.key] === o.value && "border-foreground")}
               >
                 {o.label}
               </button>

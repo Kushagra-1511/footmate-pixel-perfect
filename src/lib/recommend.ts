@@ -69,5 +69,5 @@ export function recommend(a: FinderAnswers, list: Product[] = products): FinderR
   }
 
   const confident = pool.length === 1;
-  return { confident, primary: confident ? pool[0] : null, shortlist: pool, reasons };
+  return { confident, primary: confident ? (pool[0] ?? null) : null, shortlist: pool, reasons };
 }

@@ -18,7 +18,7 @@ const selectCls =
   "flex h-11 w-full rounded-sm border border-input bg-card px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 const inputCls = "h-11 rounded-sm bg-card";
 
-function Field({ id, label, error, children, required }: { id: string; label: string; error?: string; children: React.ReactNode; required?: boolean }) {
+function Field({ id, label, error, children, required }: { id: string; label: string; error?: string | undefined; children: React.ReactNode; required?: boolean }) {
   return (
     <div className="space-y-2">
       <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
@@ -100,10 +100,10 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
     const parsed = enquirySchema.safeParse(payload);
     const errs: Record<string, string> = {};
     if (!parsed.success) for (const i of parsed.error.issues) errs[String(i.path[0])] ??= i.message;
-    if (mode === "sample" && selected.length === 0) errs.products = "Please choose at least one product";
-    if (mode === "sample" && !get("delivery_postcode")) errs.delivery_postcode = "Please enter a postcode";
-    if (mode !== "contact" && !get("state")) errs.state = "Please select a state or territory";
-    if (mode === "trade" && !get("company")) errs.company = "Please enter your company";
+    if (mode === "sample" && selected.length === 0) errs['products'] = "Please choose at least one product";
+    if (mode === "sample" && !get("delivery_postcode")) errs['delivery_postcode'] = "Please enter a postcode";
+    if (mode !== "contact" && !get("state")) errs['state'] = "Please select a state or territory";
+    if (mode === "trade" && !get("company")) errs['company'] = "Please enter your company";
     setErrors(errs);
     if (Object.keys(errs).length) return;
 
