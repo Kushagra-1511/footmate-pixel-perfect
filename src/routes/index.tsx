@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Thermometer, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
+import hero from "@/assets/hero-interior.jpg";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/site/primitives";
+import { Parallax, Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
 import { ProductHighlight } from "@/components/site/ProductHighlight";
 import { CTASection } from "@/components/site/CTASection";
