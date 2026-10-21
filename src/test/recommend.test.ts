@@ -7,12 +7,13 @@ import { RATING_MAX } from "@/data/products";
 describe("product data", () => {
   it.each([["spring", "comfort"], ["bounce", "cosy"], ["pulse", "plush"], ["bloom", "serenity"]])("keeps the supplied photograph assigned to %s", (slug, name) => {
     const product = getProduct(slug);
-    expect(product?.interiorImage).toContain(`footmate-${name}-interior.png`);
+    expect(product?.interiorImage).toContain(`footmate-${name}-interior`);
     expect(product?.productImage).toContain(`footmate-${name}-`);
   });
-  it("does not substitute another product for the missing Serenity studio photo", () => {
-    expect(getProduct("bloom")?.studioImage).toBeNull();
-    expect(getProduct("bloom")?.productImage).toBe(getProduct("bloom")?.interiorImage);
+  it("uses the supplied Serenity studio photo and updated room photo", () => {
+    expect(getProduct("bloom")?.studioImage).toContain("footmate-serenity-studio.png");
+    expect(getProduct("bloom")?.productImage).toBe(getProduct("bloom")?.studioImage);
+    expect(getProduct("bloom")?.interiorImage).toContain("footmate-serenity-interior-v2.png");
   });
   it("keeps the supplied construction order from bottom to top", () => {
     expect(materialLayers).toEqual(["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"]);
