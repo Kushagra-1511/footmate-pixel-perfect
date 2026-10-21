@@ -51,7 +51,7 @@ function ProductsPage() {
       <PageHero eyebrow="The FOOTMATE range" title="Explore the FOOTMATE collection." intro="Four distinct underlays. One commitment to comfort." />
 
       <section className="container-site py-12 md:py-16">
-        <div className="sticky top-18 z-30 -mx-5 flex flex-col gap-4 border-b border-border bg-background/90 px-5 py-4 backdrop-blur md:mx-0 md:px-0 lg:flex-row lg:items-center lg:justify-between">
+        <div className="z-30 -mx-5 flex flex-col gap-4 border-b border-border bg-background/90 px-5 py-4 backdrop-blur md:mx-0 md:px-0 lg:sticky lg:top-18 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className="eyebrow mr-1">Thickness</span>
