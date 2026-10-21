@@ -131,9 +131,6 @@ function Home() {
           </Reveal>
         </div>
       </section>
-      <section aria-label="FOOTMATE in living spaces" className="w-full">
-        <img src={products[1]?.interiorImage} alt="Cosy underlay beneath carpet in a bright architectural living space" loading="lazy" width={1024} height={572} className="aspect-[1024/572] w-full object-contain" />
-      </section>
 
       <ProductHighlight />
 
