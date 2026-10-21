@@ -16,6 +16,7 @@ export type ProductSlug = "spring" | "bounce" | "pulse" | "bloom";
 export type DensityCategory = "HD+" | "UHD";
 export type Thickness = 9 | 11;
 export const RATING_MAX = 6;
+export const materialLayers = ["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"];
 export type Rating = number | null; // out of RATING_MAX, from the finalised booklet only
 
 export interface ProductDocument {

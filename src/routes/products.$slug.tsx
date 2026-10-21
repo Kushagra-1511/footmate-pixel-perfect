@@ -3,7 +3,7 @@ import { FileText, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, Reveal } from "@/components/site/primitives";
 import { ColourBadge, CompareToggle, ProductCard, ProductRatings, ProductSwatch, SpecTable } from "@/components/site/product";
-import { accentClasses, getProduct, products } from "@/data/products";
+import { accentClasses, getProduct, products, materialLayers } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
 
@@ -95,7 +95,7 @@ function ProductPage() {
           <div className="lg:pt-10">
             <p className="eyebrow">Material construction · bottom to top</p>
             <ol className="mt-6 divide-y divide-border border-y border-border">
-              {["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"].map((layer, i) => <li key={layer} className="flex gap-6 py-5"><span className="nav-caps text-muted-foreground">0{i + 1}</span><span className="text-xl font-light">{layer}</span></li>)}
+              {materialLayers.map((layer, i) => <li key={layer} className="flex gap-6 py-5"><span className="nav-caps text-muted-foreground">0{i + 1}</span><span className="text-xl font-light">{layer}</span></li>)}
             </ol>
             <p className="mt-6 text-sm text-muted-foreground">Technical data available on request.</p>
           </div>

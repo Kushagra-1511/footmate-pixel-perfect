@@ -1,10 +1,22 @@
 import { describe, expect, it } from "vitest";
 import { recommend } from "@/lib/recommend";
-import { products, getProduct } from "@/data/products";
+import { products, getProduct, materialLayers } from "@/data/products";
 import { company } from "@/data/site";
 import { RATING_MAX } from "@/data/products";
 
 describe("product data", () => {
+  it.each([["spring", "comfort"], ["bounce", "cosy"], ["pulse", "plush"], ["bloom", "serenity"]])("keeps the supplied photograph assigned to %s", (slug, name) => {
+    const product = getProduct(slug);
+    expect(product?.interiorImage).toContain(`footmate-${name}-interior.png`);
+    expect(product?.productImage).toContain(`footmate-${name}-`);
+  });
+  it("does not substitute another product for the missing Serenity studio photo", () => {
+    expect(getProduct("bloom")?.studioImage).toBeNull();
+    expect(getProduct("bloom")?.productImage).toBe(getProduct("bloom")?.interiorImage);
+  });
+  it("keeps the supplied construction order from bottom to top", () => {
+    expect(materialLayers).toEqual(["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"]);
+  });
   it("has the four supplied products with exact thickness and classification", () => {
     expect(products.map((p) => [p.name, p.thicknessMm, p.densityCategory])).toEqual([
       ["Comfort", 11, "HD+"],
