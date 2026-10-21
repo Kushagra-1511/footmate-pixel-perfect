@@ -11,7 +11,7 @@ import serenityStudio from "@/assets/footmate-serenity-studio.png.asset.json";
 import comfortInterior from "@/assets/footmate-comfort-interior.png.asset.json";
 import cosyInterior from "@/assets/footmate-cosy-interior.png.asset.json";
 import plushInterior from "@/assets/footmate-plush-interior.png.asset.json";
-import serenityInterior from "@/assets/footmate-serenity-interior-v2.png.asset.json";
+import serenityInterior from "@/assets/footmate-serenity-interior.png.asset.json";
 
 export type ProductSlug = "spring" | "bounce" | "pulse" | "bloom";
 export type DensityCategory = "HD+" | "UHD";
