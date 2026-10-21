@@ -7,10 +7,11 @@ import foamTexture from "@/assets/foam-texture.jpg";
 import comfortStudio from "@/assets/footmate-comfort-studio.png.asset.json";
 import cosyStudio from "@/assets/footmate-cosy-studio.png.asset.json";
 import plushStudio from "@/assets/footmate-plush-studio.png.asset.json";
+import serenityStudio from "@/assets/footmate-serenity-studio.png.asset.json";
 import comfortInterior from "@/assets/footmate-comfort-interior.png.asset.json";
 import cosyInterior from "@/assets/footmate-cosy-interior.png.asset.json";
 import plushInterior from "@/assets/footmate-plush-interior.png.asset.json";
-import serenityInterior from "@/assets/footmate-serenity-interior.png.asset.json";
+import serenityInterior from "@/assets/footmate-serenity-interior-v2.png.asset.json";
 
 export type ProductSlug = "spring" | "bounce" | "pulse" | "bloom";
 export type DensityCategory = "HD+" | "UHD";
@@ -202,8 +203,8 @@ export const products: Product[] = [
     shortDescription: "High-density performance in a refined, versatile profile.",
     fullDescription:
       "SERENITY pairs the UHD classification with a refined 9 mm profile — high-density performance that stays versatile across a wide range of carpet installations.",
-    productImage: serenityInterior.url,
-    studioImage: null,
+    productImage: serenityStudio.url,
+    studioImage: serenityStudio.url,
     interiorImage: serenityInterior.url,
     textureImage: foamTexture,
     comfortRating: 5,
