@@ -7,4 +7,4 @@
 - [x] Integrate supplied studio and architectural images with correct product mappings.
 - [x] Elevate home, collection, product stories, details and comparison while preserving workflows.
 - [x] Verify desktop/mobile imagery, navigation, sample selection and existing tests.
-- [x] Add supplied Serenity studio photograph and updated room photograph, completing the image set.
+- [x] Add supplied Serenity studio photograph and the carpet-reveal room photograph, completing the image set.
