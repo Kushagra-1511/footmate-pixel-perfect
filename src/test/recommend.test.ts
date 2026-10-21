@@ -25,10 +25,8 @@ describe("product data", () => {
   it("keeps unprovided measured specifications unavailable", () => {
     expect(products.map(p => p.technicalSpecifications.find(s => s.label === "Acoustic performance")?.value)).toEqual([null, null, null, null]);
   });
-  it("uses the printed contact details", () => {
-    expect([company.phone, company.email, company.address, company.website]).toEqual([
-      "+61 419 802 853", "paulv@sarvafoam.com.au", "9 Cameron Street, Richmond VIC 3121", "https://www.sarvafoam.com.au",
-    ]);
+  it("hides contact details until new ones are supplied", () => {
+    expect([company.phone, company.email, company.address, company.website]).toEqual([null, null, null, null]);
   });
 });
 

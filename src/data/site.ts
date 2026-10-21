@@ -7,10 +7,10 @@ export const company = {
   tagline: "Luxury from the first step.",
   secondaryLine: "Recycled. Remade. Refined.",
   // Only verified details go here. null = not displayed.
-  email: "paulv@sarvafoam.com.au" as string | null,
-  phone: "+61 419 802 853" as string | null,
-  address: "9 Cameron Street, Richmond VIC 3121" as string | null,
-  website: "https://www.sarvafoam.com.au",
+  email: null as string | null,
+  phone: null as string | null,
+  address: null as string | null,
+  website: null as string | null,
   abn: null as string | null,
 };
 
