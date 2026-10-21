@@ -1,10 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { FileText, Check } from "lucide-react";
-import stairs from "@/assets/stairs.jpg";
-import hero from "@/assets/hero-interior.jpg";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, Reveal } from "@/components/site/primitives";
-import { onAccent, ColourBadge, CompareToggle, ProductCard, ProductRatings, ProductSwatch, SpecTable } from "@/components/site/product";
+import { ColourBadge, CompareToggle, ProductCard, ProductRatings, ProductSwatch, SpecTable } from "@/components/site/product";
 import { accentClasses, getProduct, products } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
@@ -17,7 +15,7 @@ export const Route = createFileRoute("/products/$slug")({
   },
   head: ({ loaderData, params }) => {
     const p = loaderData ? getProduct(loaderData.slug) : undefined;
-    if (!p) return { meta: [{ title: "Product unavailable | FOOTMATE" }, { name: "robots", content: "noindex" }] };
+    if (!p) return seo("Product unavailable", "Explore the FOOTMATE carpet underlay collection.", "/products");
     const base = seo(
       `FOOTMATE ${p.name} — ${p.thicknessMm} mm ${p.densityCategory} Carpet Underlay`,
       `${p.shortDescription} FOOTMATE ${p.name} is a ${p.thicknessMm} mm ${p.densityCategory} recycled polyurethane foam carpet underlay.`,
@@ -41,20 +39,10 @@ function ProductPage() {
 
   return (
     <>
-      <section aria-label={`FOOTMATE ${p.name}`} className={cn("grain relative overflow-hidden", a.bg, onAccent[p.slug])}>
-        <img src={p.textureImage} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-multiply" />
-        <div className="container-site relative z-[2] pb-10 pt-12 md:pt-16">
-          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.22em] opacity-80">
-            <span>FOOTMATE · {p.colourName}</span>
-            <span>{p.thicknessMm} mm · {p.densityCategory}</span>
-          </div>
-          <p aria-hidden className="display-product rise mt-10 select-none">{p.name}</p>
-        </div>
-      </section>
       <Breadcrumbs items={[{ label: "Products", to: "/products" }, { label: p.name }]} />
       <section className="container-site grid gap-10 pb-20 pt-8 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
-          <ProductSwatch product={p} large className="aspect-square lg:sticky lg:top-24" />
+          <ProductSwatch product={p} large className="aspect-[4/3] lg:sticky lg:top-24" />
         </div>
         <div className="lg:col-span-5 lg:pt-6">
           <ColourBadge product={p} />
@@ -63,7 +51,7 @@ function ProductPage() {
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{p.fullDescription}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg"><Link to="/request-samples" search={{ product: p.slug }}>Request a {p.name} sample</Link></Button>
-            <Button asChild size="lg" variant="outline"><Link to="/trade">Trade enquiry</Link></Button>
+            <Button asChild size="lg" variant="outline"><a href="#technical-information">Technical information</a></Button>
           </div>
           <div className="mt-6"><CompareToggle product={p} /></div>
 
@@ -97,7 +85,23 @@ function ProductPage() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-card">
+      <section className="container-site pb-20">
+        <div className="flex items-end justify-between gap-6 border-t border-border pt-6">
+          <h2 className="display-lg">Beneath the surface.</h2>
+          <p className="nav-caps text-muted-foreground">FOOTMATE {p.name}</p>
+        </div>
+        <div className="mt-10 grid items-start gap-8 lg:grid-cols-2">
+          <img src={p.interiorImage} alt={`${p.name} underlay revealed beneath carpet in a furnished room`} loading="lazy" className="aspect-[1024/572] w-full object-contain" />
+          <div className="lg:pt-10">
+            <p className="eyebrow">Material construction · bottom to top</p>
+            <ol className="mt-6 divide-y divide-border border-y border-border">
+              {["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"].map((layer, i) => <li key={layer} className="flex gap-6 py-5"><span className="nav-caps text-muted-foreground">0{i + 1}</span><span className="text-xl font-light">{layer}</span></li>)}
+            </ol>
+            <p className="mt-6 text-sm text-muted-foreground">Technical data available on request.</p>
+          </div>
+        </div>
+      </section>
+      <section id="technical-information" className="scroll-mt-24 border-y border-border bg-card">
         <div className="container-site grid gap-12 py-20 lg:grid-cols-2">
           <Reveal>
             <h2 className="text-3xl font-bold">Technical specifications</h2>
@@ -119,7 +123,7 @@ function ProductPage() {
               ))}
             </ul>
             <div className="mt-8 grid grid-cols-2 gap-4">
-              <img src={p.staircaseSuitability ? stairs : hero} alt="Carpeted interior" width={1280} height={1600} loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              <img src={p.interiorImage} alt={`${p.name} underlay beneath carpet`} width={1280} height={1600} loading="lazy" className="aspect-[4/3] w-full object-contain" />
               <div className="flex flex-col justify-end bg-secondary p-6">
                 <p className="text-sm leading-relaxed text-muted-foreground">{p.sustainabilityInformation}</p>
                 <Link to="/sustainability" className="mt-4 text-sm font-semibold underline underline-offset-2">Our approach</Link>

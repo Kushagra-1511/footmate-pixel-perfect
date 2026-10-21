@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Store, Truck, Hammer, Ruler, Building2, Briefcase, ArrowRight } from "lucide-react";
 import { Breadcrumbs, PageHero, Reveal, SectionHeading } from "@/components/site/primitives";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { products } from "@/data/products";
 import { tradeCategories } from "@/data/site";
 import { seo } from "@/lib/seo";
 
@@ -26,6 +27,7 @@ function TradePage() {
       <PageHero eyebrow="Trade & professionals" title="A partner for the Australian flooring trade." intro="Sarva Australia supplies a clearly differentiated underlay range, backed by an emphasis on product information, quality and trade relationships." />
 
       <section className="container-site py-24">
+        <img src={products[2]?.interiorImage} alt="Plush underlay revealed beneath carpet in an architectural interior" className="mb-16 aspect-[1024/572] w-full object-contain" loading="lazy" />
         <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
           {audiences.map((a, i) => (
             <Reveal key={a.t} delay={i * 60} className="bg-background p-8 md:p-10">

@@ -20,9 +20,9 @@ export const Route = createFileRoute("/products/")({
 
 function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
-    <button type="button" aria-pressed={on} onClick={onClick} className={cn("h-9 rounded-full border px-4 text-sm font-semibold transition-colors", on ? "border-foreground bg-foreground text-background" : "border-border bg-card hover:border-foreground/40")}>
+    <Button variant="outline" type="button" aria-pressed={on} onClick={onClick} className={cn("h-9 rounded-none border px-4 text-sm font-semibold transition-colors", on ? "border-foreground bg-foreground text-background" : "border-border bg-card hover:border-foreground/40")}>
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -48,7 +48,7 @@ function ProductsPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Products" }]} />
-      <PageHero eyebrow="The FOOTMATE range" title="Four underlays. One standard of comfort." intro="Each FOOTMATE product pairs a profile — 9 mm or 11 mm — with a density classification — HD+ or UHD. Choose the balance that suits your floor." />
+      <PageHero eyebrow="The FOOTMATE range" title="Explore the FOOTMATE collection." intro="Four distinct underlays. One commitment to comfort." />
 
       <section className="container-site py-12 md:py-16">
         <div className="sticky top-18 z-30 -mx-5 flex flex-col gap-4 border-b border-border bg-background/90 px-5 py-4 backdrop-blur md:mx-0 md:px-0 lg:flex-row lg:items-center lg:justify-between">
@@ -84,7 +84,7 @@ function ProductsPage() {
           <p className="mt-16 text-center text-muted-foreground">No products match those filters.</p>
         )}
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-6 border border-border bg-card p-8 md:flex-row md:items-center">
+        <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-border py-8 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-bold">Not sure which to choose?</h2>
             <p className="mt-2 text-muted-foreground">Answer five quick questions, or compare the range side by side.</p>

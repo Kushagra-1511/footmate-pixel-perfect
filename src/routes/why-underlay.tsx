@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import stairs from "@/assets/stairs.jpg";
 import { Breadcrumbs, PageHero, Reveal, SectionHeading } from "@/components/site/primitives";
-import { LayeredFloor } from "@/components/site/LayeredFloor";
+import { products } from "@/data/products";
 import { FootmateFinder } from "@/components/site/FootmateFinder";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { CTASection } from "@/components/site/CTASection";
@@ -35,7 +35,7 @@ function WhyPage() {
       <PageHero eyebrow="Why underlay" title="The part of the floor you never see — and always feel." intro="A clear guide to what carpet underlay does, why quality matters and how to choose the right one for your home." />
 
       <section className="container-site grid items-center gap-16 py-24 lg:grid-cols-2">
-        <Reveal><LayeredFloor accentClass="bg-spring" /></Reveal>
+        <Reveal><img src={products[0]?.interiorImage} alt="Comfort underlay revealed beneath carpet" className="aspect-[1024/572] w-full object-contain" loading="lazy" /></Reveal>
         <Reveal delay={100}>
           <SectionHeading eyebrow="What it is" title="A quiet layer with a big job." intro="Underlay sits between your carpet and the subfloor. It cushions, supports and helps the whole floor perform as one system." />
         </Reveal>
