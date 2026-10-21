@@ -4,11 +4,19 @@
  * Leave a value as null until it is verified by supplied documentation.
  */
 import foamTexture from "@/assets/foam-texture.jpg";
+import comfortStudio from "@/assets/footmate-comfort-studio.png.asset.json";
+import cosyStudio from "@/assets/footmate-cosy-studio.png.asset.json";
+import plushStudio from "@/assets/footmate-plush-studio.png.asset.json";
+import comfortInterior from "@/assets/footmate-comfort-interior.png.asset.json";
+import cosyInterior from "@/assets/footmate-cosy-interior.png.asset.json";
+import plushInterior from "@/assets/footmate-plush-interior.png.asset.json";
+import serenityInterior from "@/assets/footmate-serenity-interior.png.asset.json";
 
 export type ProductSlug = "spring" | "bounce" | "pulse" | "bloom";
 export type DensityCategory = "HD+" | "UHD";
 export type Thickness = 9 | 11;
 export const RATING_MAX = 6;
+export const materialLayers = ["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"];
 export type Rating = number | null; // out of RATING_MAX, from the finalised booklet only
 
 export interface ProductDocument {
@@ -37,6 +45,8 @@ export interface Product {
   shortDescription: string;
   fullDescription: string;
   productImage: string;
+  studioImage: string | null;
+  interiorImage: string;
   textureImage: string;
   comfortRating: Rating;
   durabilityRating: Rating;
@@ -90,7 +100,9 @@ export const products: Product[] = [
     shortDescription: "Balanced everyday performance with excellent cushioning.",
     fullDescription:
       "COMFORT brings a generous 11 mm of cushioning to everyday living spaces. Its HD+ classification balances a soft, welcoming feel underfoot with the support a carpet needs day after day — a dependable all-rounder for the home.",
-    productImage: foamTexture,
+    productImage: comfortStudio.url,
+    studioImage: comfortStudio.url,
+    interiorImage: comfortInterior.url,
     textureImage: foamTexture,
     comfortRating: 5,
     durabilityRating: 4,
@@ -122,7 +134,9 @@ export const products: Product[] = [
     shortDescription: "Responsive comfort in a practical profile, including staircase applications.",
     fullDescription:
       "COSY offers responsive comfort in a practical 9 mm profile. Its HD+ classification and slimmer build make it a considered choice where a neat finish matters — including staircase applications.",
-    productImage: foamTexture,
+    productImage: cosyStudio.url,
+    studioImage: cosyStudio.url,
+    interiorImage: cosyInterior.url,
     textureImage: foamTexture,
     comfortRating: 4,
     durabilityRating: 4,
@@ -154,7 +168,9 @@ export const products: Product[] = [
     shortDescription: "Premium cushioning and support for rooms where comfort matters most.",
     fullDescription:
       "PLUSH is the most luxurious expression of the range: a full 11 mm profile in the UHD classification, developed for bedrooms, lounges and the rooms where comfort matters most.",
-    productImage: foamTexture,
+    productImage: plushStudio.url,
+    studioImage: plushStudio.url,
+    interiorImage: plushInterior.url,
     textureImage: foamTexture,
     comfortRating: 5,
     durabilityRating: 5,
@@ -186,7 +202,9 @@ export const products: Product[] = [
     shortDescription: "High-density performance in a refined, versatile profile.",
     fullDescription:
       "SERENITY pairs the UHD classification with a refined 9 mm profile — high-density performance that stays versatile across a wide range of carpet installations.",
-    productImage: foamTexture,
+    productImage: serenityInterior.url,
+    studioImage: null,
+    interiorImage: serenityInterior.url,
     textureImage: foamTexture,
     comfortRating: 5,
     durabilityRating: 5,

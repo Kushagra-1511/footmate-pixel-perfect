@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, PageHero } from "@/components/site/primitives";
+import { ProductSwatch } from "@/components/site/product";
 import { useCompare } from "@/components/site/compare-context";
 import { accentClasses, products, UNVERIFIED, RATING_MAX, type Product, type Rating } from "@/data/products";
 import { cn } from "@/lib/utils";
@@ -33,16 +34,19 @@ function ComparePage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Products", to: "/products" }, { label: "Compare" }]} />
-      <PageHero eyebrow="Compare" title="Side by side." intro="Choose two to four FOOTMATE products. Unverified values are clearly marked and never estimated." />
+      <PageHero eyebrow="Compare" title="Side by side." intro="Comfort, Cosy, Plush or Serenity. Find the profile for your floor." />
       <section className="container-site py-12">
+        <div className="mb-14 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {products.map(p => <Link key={p.slug} to="/products/$slug" params={{ slug: p.slug }} className="group"><ProductSwatch product={p} className="aspect-[4/3]" /><div className={cn("mt-5 border-t-2 pt-4", accentClasses[p.slug].border)}><h2 className="text-2xl font-light">{p.name}</h2><p className="mt-2 text-sm text-muted-foreground">{p.thicknessMm} mm · {p.densityCategory}</p></div></Link>)}
+        </div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="eyebrow mr-2">Selected</span>
           {products.map((p) => {
             const on = selected.includes(p.slug);
             return (
-              <button key={p.slug} type="button" aria-pressed={on} onClick={() => toggle(p.slug)} className={cn("inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-semibold", on ? "border-foreground bg-foreground text-background" : "border-border bg-card")}>
+              <Button variant="outline" key={p.slug} type="button" aria-pressed={on} onClick={() => toggle(p.slug)} className={cn("inline-flex h-10 items-center gap-2 rounded-none border px-4 text-sm font-semibold", on ? "border-foreground bg-foreground text-background" : "border-border bg-card")}>
                 <span className={cn("h-2.5 w-2.5 rounded-full", accentClasses[p.slug].bg)} />{p.name}
-              </button>
+              </Button>
             );
           })}
           <Button variant="link" size="sm" onClick={() => setAll(products.map((p) => p.slug))}>Select all</Button>
@@ -64,7 +68,7 @@ function ComparePage() {
                     {list.map((p) => (
                       <th key={p.slug} scope="col" className="p-0 text-left align-bottom">
                         <div className={cn("h-2", accentClasses[p.slug].bg)} />
-                        <div className="border-x border-border bg-card p-5">
+                        <ProductSwatch product={p} className="aspect-[4/3]" /><div className="border-x border-border bg-card p-5">
                           <p className="text-2xl font-bold">{p.name}</p>
                           <p className="mt-1 text-xs font-normal text-muted-foreground">{p.colourName}</p>
                         </div>
@@ -101,7 +105,7 @@ function ComparePage() {
               {list.map((p) => (
                 <div key={p.slug} className="border border-border bg-card">
                   <div className={cn("h-2", accentClasses[p.slug].bg)} />
-                  <div className="p-5">
+                  <ProductSwatch product={p} className="aspect-[4/3]" /><div className="p-5">
                     <p className="text-2xl font-bold">{p.name}</p>
                     <dl className="mt-4 divide-y divide-border">
                       {rows.map((row) => {

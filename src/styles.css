@@ -117,7 +117,7 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 300;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     text-wrap: balance;
   }
   :focus-visible {
@@ -148,14 +148,14 @@
   font-weight: 300;
   font-size: clamp(2.6rem, 6.5vw, 5.75rem);
   line-height: 0.98;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 @utility display-lg {
   font-weight: 300;
   font-size: clamp(2rem, 4.2vw, 3.75rem);
   line-height: 1.04;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 @utility shadow-soft {
@@ -193,14 +193,14 @@
   font-weight: 200;
   font-size: clamp(3rem, 9vw, 9.5rem);
   line-height: 0.92;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 @utility display-product {
   font-weight: 200;
   font-size: clamp(3.5rem, 13vw, 13rem);
   line-height: 0.85;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
 }
 
 @utility type-outline {
@@ -299,3 +299,17 @@
     transform: none !important;
   }
 }
+
+/* Editorial campaign scale uses fixed type steps, never viewport-scaled type. */
+.campaign-hero { height: min(760px, calc(100svh - 150px)); min-height: 570px; }
+.hero-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--charcoal) 65%, transparent), transparent 72%), linear-gradient(0deg, color-mix(in oklab, var(--charcoal) 65%, transparent), transparent 22%); }
+.campaign-title { font-size: 76px; font-weight: 300; line-height: 1.04; letter-spacing: 0; }
+.statement-title { font-size: 48px; font-weight: 300; line-height: 1.16; letter-spacing: 0; }
+.spotlight-title { font-size: 80px; font-weight: 200; line-height: 1.08; letter-spacing: 0; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .campaign-hero { height: 620px; min-height: 0; }
+  .campaign-title { font-size: 42px; }
+  .statement-title { font-size: 30px; }
+  .spotlight-title { font-size: 56px; }
+}
+@media (max-width: 359px) { .campaign-title { font-size: 36px; } }

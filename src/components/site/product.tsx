@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { accentClasses, type Product, type Rating, ON_REQUEST, RATING_MAX } from "@/data/products";
 import { useCompare } from "./compare-context";
@@ -44,7 +45,8 @@ export function CompareToggle({ product, className }: { product: Product; classN
   const { has, toggle } = useCompare();
   const on = has(product.slug);
   return (
-    <button
+    <Button
+      variant="ghost"
       type="button"
       onClick={() => toggle(product.slug)}
       aria-pressed={on}
@@ -58,7 +60,7 @@ export function CompareToggle({ product, className }: { product: Product; classN
         {on ? <Check className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
       </span>
       {on ? "Added to compare" : "Add to compare"}
-    </button>
+    </Button>
   );
 }
 
@@ -70,29 +72,11 @@ export const onAccent: Record<Product["slug"], string> = {
   bloom: "text-charcoal",
 };
 
-/** Layered colour field in product colour — used in place of product photography until official artwork is supplied. */
+/** Supplied photography is never tinted, overprinted or cropped. */
 export function ProductSwatch({ product, className, large = false }: { product: Product; className?: string; large?: boolean }) {
-  const a = accentClasses[product.slug];
   return (
-    <div className={cn("grain @container relative overflow-hidden", a.bg, onAccent[product.slug], className)}>
-      <img src={product.textureImage} alt="" aria-hidden width={1280} height={1280} loading="lazy" className="absolute inset-0 h-full w-full scale-105 object-cover opacity-30 mix-blend-multiply transition-transform duration-[1.6s] ease-out group-hover:scale-115" />
-      {/* Rebound curves */}
-      <svg aria-hidden viewBox="0 0 400 500" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-40">
-        <path d="M0 380 C 100 300, 300 300, 400 380 L400 500 L0 500Z" fill="currentColor" opacity="0.12" />
-        <path d="M0 430 C 120 370, 280 370, 400 430 L400 500 L0 500Z" fill="currentColor" opacity="0.18" />
-      </svg>
-      <div className="absolute inset-0 z-[2] flex flex-col justify-between p-6 md:p-8">
-        <div className="flex items-start justify-between">
-          <span className="nav-caps opacity-75">FOOTMATE</span>
-          <span className="text-xs font-bold tracking-widest opacity-75">{product.densityCategory}</span>
-        </div>
-        <div>
-          <p className={cn("font-extralight leading-none tracking-normal", large ? "text-[min(18cqw,9rem)]" : "text-[min(17cqw,4.6rem)]")}>{product.name}</p>
-          <p className="mt-4 flex items-baseline gap-2 text-sm font-semibold opacity-80">
-            <span className={cn("font-light tracking-tight", large ? "text-4xl" : "text-2xl")}>{product.thicknessMm}</span>mm · {product.colourName}
-          </p>
-        </div>
-      </div>
+    <div className={cn("relative overflow-hidden bg-secondary", className)}>
+      <img src={product.productImage} alt={`FOOTMATE ${product.name} ${product.thicknessMm} mm ${product.densityCategory} ${product.studioImage ? "studio panel" : "beneath carpet"}`} loading={large ? "eager" : "lazy"} className="h-full w-full object-contain" />
     </div>
   );
 }
@@ -101,7 +85,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group flex h-full flex-col">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="zoom-tile block" aria-label={`View ${product.name}`}>
-        <ProductSwatch product={product} className="aspect-[3/4]" />
+        <ProductSwatch product={product} className="aspect-[4/3]" />
       </Link>
       <div className="flex flex-1 flex-col gap-4 pt-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">

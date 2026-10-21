@@ -1,11 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Thermometer, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
-import hero from "@/assets/hero-interior.jpg";
-import foam from "@/assets/foam-texture.jpg";
-import carpet from "@/assets/carpet-texture.jpg";
-import stairs from "@/assets/stairs.jpg";
 import { Button } from "@/components/ui/button";
-import { Parallax, Reveal } from "@/components/site/primitives";
+import { Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
 import { ProductHighlight } from "@/components/site/ProductHighlight";
 import { CTASection } from "@/components/site/CTASection";
@@ -15,7 +11,7 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   head: () =>
     seo(
-      "Carpet Underlay Australia — Luxury from the first step",
+      "FOOTMATE — The comfort beneath",
       "FOOTMATE recycled polyurethane foam carpet underlay. Four distinct products — Comfort, Cosy, Plush and Serenity — for comfort and lasting performance beneath Australian floors.",
       "/",
     ),
@@ -55,42 +51,41 @@ function Home() {
         </div>
       </div>
 
-      {/* Full-bleed hero */}
-      <section className="relative isolate h-[calc(100svh-6.9rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
-        <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
-          <img src={hero} alt="Sunlit living room with soft neutral carpet" width={1920} height={1152} fetchPriority="high" className="h-[112%] w-full object-cover" />
-        </Parallax>
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/75 via-charcoal/10 to-transparent" />
-        <div className="container-site flex h-full flex-col justify-end pb-12 md:pb-16">
-          <h1 className="display-mega rise mt-6 max-w-5xl [animation-delay:120ms]">Luxury from the first step.</h1>
-          <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
-            <TextLink to="/products" light>Explore the range</TextLink>
-            <TextLink to="/request-samples" light>Request samples</TextLink>
+      <section className="campaign-hero relative isolate overflow-hidden bg-charcoal text-charcoal-foreground">
+        <img src={products[0]?.interiorImage} alt="FOOTMATE Comfort underlay revealed beneath carpet in a sunlit living room" width={1024} height={572} fetchPriority="high" className="absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center]" />
+        <div aria-hidden className="hero-shade absolute inset-0 -z-10" />
+        <div className="container-site flex h-full flex-col justify-between py-10 md:py-14">
+          <div className="max-w-3xl">
+            <p className="nav-caps rise text-charcoal-foreground/80">Luxury from the first step.</p>
+            <h1 className="campaign-title rise mt-6 [animation-delay:120ms]">THE COMFORT<br />BENEATH.</h1>
+            <p className="rise mt-7 max-w-md text-base leading-relaxed text-charcoal-foreground/90 [animation-delay:240ms]">Discover thoughtfully engineered carpet underlay designed for the spaces we live and work in.</p>
+          </div>
+          <div className="rise mt-12 flex flex-wrap items-center gap-x-8 gap-y-5 [animation-delay:300ms]">
+            <TextLink to="/products" light>Explore Our Range</TextLink>
+            <TextLink to="/why-underlay" light>Discover FOOTMATE</TextLink>
           </div>
         </div>
       </section>
 
-      {/* Statement */}
-      <section className="container-site py-28 md:py-44">
+      <section className="container-site py-24 md:py-32">
         <Reveal className="mx-auto max-w-5xl text-center">
           <p className="eyebrow">Recycled. Remade. Refined.</p>
-          <p className="mt-10 text-3xl font-extralight leading-[1.2] tracking-tight md:text-5xl">
-            Discover FOOTMATE recycled polyurethane foam underlay—designed to bring comfort, support and lasting performance beneath your carpet.
-          </p>
-          <div className="mt-12"><TextLink to="/why-underlay">Why underlay matters</TextLink></div>
+          <h2 className="statement-title mt-8">EXCEPTIONAL FLOORS START<br className="hidden md:block" /> BELOW THE SURFACE.</h2>
+          <p className="mx-auto mt-8 max-w-xl leading-relaxed text-muted-foreground">A considered foundation for the spaces you call home. Four distinct underlays, bringing comfort and support to every step.</p>
+          <div className="mt-10"><TextLink to="/why-underlay">Why underlay matters</TextLink></div>
         </Reveal>
       </section>
 
       {/* Collection */}
       <section className="container-site pb-28 md:pb-40">
         <div className="flex flex-col justify-between gap-6 border-t border-foreground/80 pt-6 md:flex-row md:items-baseline">
-          <h2 className="text-3xl font-light tracking-tight md:text-4xl">The collection</h2>
+          <h2 className="text-2xl font-light md:text-3xl">EXPLORE THE FOOTMATE COLLECTION</h2>
           <div className="flex gap-8">
             <TextLink to="/products">View all</TextLink>
             <TextLink to="/products/compare">Compare</TextLink>
           </div>
         </div>
-        <p className="mt-4 max-w-xl text-muted-foreground">Four distinct underlay options, thoughtfully developed for different flooring priorities.</p>
+        <p className="mt-4 max-w-xl text-muted-foreground">Four distinct underlays. One commitment to comfort.</p>
         <div className="mt-14 grid gap-x-6 gap-y-16 sm:grid-cols-2 xl:grid-cols-4">
           {products.map((p, i) => (
             <Reveal key={p.slug} delay={i * 90}><ProductCard product={p} /></Reveal>
@@ -100,8 +95,8 @@ function Home() {
 
       {/* Editorial split — material */}
       <section className="grid lg:grid-cols-12">
-        <div className="zoom-tile relative min-h-[420px] lg:col-span-7 lg:min-h-[760px]">
-          <img src={foam} alt="Macro view of rebonded polyurethane foam" loading="lazy" width={1280} height={1280} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="zoom-tile relative aspect-[4/3] bg-secondary lg:col-span-7 lg:aspect-auto">
+          <img src={products[2]?.productImage} alt="FOOTMATE Plush panel with branded laminate and visible rebonded foam edge" loading="lazy" width={1280} height={1280} className="absolute inset-0 h-full w-full object-contain" />
         </div>
         <div className="flex flex-col justify-center bg-secondary px-6 py-20 md:px-16 lg:col-span-5">
           <Reveal>
@@ -122,27 +117,22 @@ function Home() {
         </div>
       </section>
 
-      {/* Mosaic — spaces */}
-      <section className="container-site py-28 md:py-40">
-        <div className="grid gap-6 md:grid-cols-12">
-          <Reveal className="md:col-span-5 md:pt-32">
-            <div className="zoom-tile"><img src={stairs} alt="Carpeted staircase" loading="lazy" className="aspect-[4/5] w-full object-cover" /></div>
-            <p className="nav-caps mt-4 text-muted-foreground">Stairs — Cosy & Serenity</p>
+      <section className="container-site py-24 md:py-32">
+        <div className="grid items-end gap-12 md:grid-cols-12">
+          <Reveal className="md:col-span-5">
+            <p className="eyebrow">An unseen difference</p>
+            <h2 className="display-lg mt-6">DESIGNED TO BE FELT.<br />ENGINEERED TO BE UNSEEN.</h2>
+            <p className="mt-7 max-w-md leading-relaxed text-muted-foreground">The finish you see. The foundation you feel. FOOTMATE sits quietly beneath your carpet, bringing comfort into everyday life.</p>
+            <div className="mt-9"><TextLink to="/products">Find your foundation</TextLink></div>
           </Reveal>
-          <Reveal delay={120} className="md:col-span-7">
-            <div className="zoom-tile"><img src={hero} alt="Living room with soft carpet" loading="lazy" className="aspect-[4/3] w-full object-cover" /></div>
-            <p className="nav-caps mt-4 text-muted-foreground">Living spaces</p>
-            <div className="mt-16 grid grid-cols-2 gap-6">
-              <div>
-                <div className="zoom-tile"><img src={carpet} alt="Close-up of carpet fibres" loading="lazy" className="aspect-square w-full object-cover" /></div>
-                <p className="nav-caps mt-4 text-muted-foreground">Above — carpet</p>
-              </div>
-              <div className="flex flex-col justify-end">
-                <h2 className="text-3xl font-extralight leading-tight tracking-tight md:text-4xl">Felt in every room. Noticed with every step.</h2>
-              </div>
-            </div>
+          <Reveal className="md:col-span-7">
+            <img src={products[3]?.interiorImage} alt="Serenity underlay revealed beneath bedroom carpet" loading="lazy" className="aspect-[1024/572] w-full object-contain" />
+            <p className="nav-caps mt-4 text-muted-foreground">Serenity · 9 mm · UHD</p>
           </Reveal>
         </div>
+      </section>
+      <section aria-label="FOOTMATE in living spaces" className="w-full">
+        <img src={products[1]?.interiorImage} alt="Cosy underlay beneath carpet in a bright architectural living space" loading="lazy" width={1024} height={572} className="aspect-[1024/572] w-full object-contain" />
       </section>
 
       <ProductHighlight />
@@ -178,8 +168,8 @@ function Home() {
             <div className="mt-12"><TextLink to="/sustainability" light>Explore our approach</TextLink></div>
           </Reveal>
         </div>
-        <div className="zoom-tile relative min-h-[420px] lg:order-2 lg:col-span-7 lg:min-h-[720px]">
-          <img src={carpet} alt="Soft woven carpet texture" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="zoom-tile relative aspect-[4/3] bg-secondary lg:order-2 lg:col-span-7 lg:aspect-auto">
+          <img src={products[0]?.productImage} alt="Comfort panel showing rebonded foam construction" loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
         </div>
       </section>
 

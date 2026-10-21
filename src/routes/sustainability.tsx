@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import foam from "@/assets/foam-texture.jpg";
+import { products } from "@/data/products";
 import { Breadcrumbs, PageHero, Reveal, SectionHeading } from "@/components/site/primitives";
 import { CTASection } from "@/components/site/CTASection";
 import { seo } from "@/lib/seo";
@@ -50,7 +50,7 @@ function SustainabilityPage() {
 
       <section className="bg-card">
         <div className="container-site grid gap-16 py-24 lg:grid-cols-2">
-          <img src={foam} alt="Rebonded polyurethane foam showing recovered pieces" width={1280} height={1280} loading="lazy" className="aspect-square w-full object-cover" />
+          <img src={products[0]?.productImage} alt="Comfort panel showing the rebonded polyurethane foam edge" loading="lazy" className="aspect-[4/3] w-full object-contain" />
           <div className="divide-y divide-border">
             {sections.map((s) => (
               <Reveal key={s.t} className="py-7 first:pt-0">
