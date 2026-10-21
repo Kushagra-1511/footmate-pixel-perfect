@@ -16,7 +16,7 @@ export function ProductHighlight() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <p className="nav-caps opacity-80">A closer look · 0{index + 1} / 04</p>
           <div role="tablist" aria-label="Choose a product" className="flex flex-wrap gap-2">
-            {products.map((p, i) => <Button key={p.slug} role="tab" aria-selected={index === i} variant="ghost" onClick={() => setIndex(i)} className={cn("border text-current", index === i ? "border-current" : "border-transparent opacity-70")}><span className={cn("h-2 w-2 rounded-full ring-1 ring-current", accentClasses[p.slug].bg)} />{p.name}</Button>)}
+            {products.map((p, i) => <Button key={p.slug} role="tab" aria-selected={index === i} variant="ghost" onClick={() => setIndex(i)} className={cn("border text-current hover:bg-transparent hover:text-current", index === i ? "border-current" : "border-transparent opacity-70")}><span className={cn("h-2 w-2 rounded-full ring-1 ring-current", accentClasses[p.slug].bg)} />{p.name}</Button>)}
           </div>
         </div>
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-12">
