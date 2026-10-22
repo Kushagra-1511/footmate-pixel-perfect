@@ -7,6 +7,7 @@ import { products } from "@/data/products";
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-ink-foreground">
+      <div aria-hidden className="spectrum-rule" />
       {/* Brand sign-off — official wordmark on a light panel so the navy artwork stays true */}
       <div className="container-site flex flex-col items-center border-b border-ink-foreground/10 py-16 text-center md:py-24">
         <div className="rounded-sm bg-ink-foreground px-10 py-7 md:px-14 md:py-9">
