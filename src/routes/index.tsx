@@ -6,6 +6,7 @@ import skyline from "@/assets/footmate-skyline-campaign.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Parallax, Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
+import { ColourRibbon } from "@/components/site/ColourRibbon";
 import { ProductHighlight } from "@/components/site/ProductHighlight";
 import { SpacesWeLove } from "@/components/site/SpacesWeLove";
 import { CTASection } from "@/components/site/CTASection";
@@ -111,6 +112,9 @@ function Home() {
           ))}
         </div>
       </section>
+
+      {/* Interactive colour spectrum — pure product colour, no photography */}
+      <ColourRibbon />
 
       {/* Brand moment — oversized identity, warm ivory, generous negative space */}
       <section aria-label="FOOTMATE brand statement" className="border-y border-border/60 bg-background">

@@ -20,7 +20,7 @@ function NavLink({ to, label }: { to: string; label: string }) {
   return (
     <Link
       to={to}
-      className="nav-caps whitespace-nowrap text-muted-foreground transition-colors duration-300 hover:text-foreground"
+      className="nav-caps link-sweep whitespace-nowrap pb-1 text-muted-foreground transition-colors duration-300 hover:text-foreground"
       activeProps={{ className: "text-foreground" }}
     >
       {label}
