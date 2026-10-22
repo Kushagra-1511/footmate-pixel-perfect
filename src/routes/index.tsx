@@ -70,6 +70,22 @@ function Home() {
         </div>
       </section>
 
+      {/* Brand marquee — slow, quiet motion */}
+      <div aria-hidden className="overflow-hidden border-b border-border/60 py-4">
+        <div className="marquee gap-12">
+          {[0, 1].map((n) => (
+            <div key={n} className="flex shrink-0 items-center gap-12">
+              {["FOOTMATE", "The Comfort Beneath", "Recycled. Remade. Refined.", "Comfort", "Cosy", "Plush", "Serenity"].map((t, i) => (
+                <span key={t} className="flex items-center gap-12">
+                  <span className="nav-caps whitespace-nowrap text-muted-foreground">{t}</span>
+                  <span className={`h-1.5 w-1.5 rounded-full ${["bg-spring", "bg-bounce", "bg-pulse", "bg-bloom"][i % 4]}`} />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <section className="container-site py-24 md:py-32">
         <Reveal className="mx-auto max-w-5xl text-center">
           <p className="eyebrow">Recycled. Remade. Refined.</p>
@@ -100,7 +116,7 @@ function Home() {
       <section aria-label="FOOTMATE brand statement" className="border-y border-border/60 bg-background">
         <Reveal className="container-site flex flex-col items-center py-28 text-center md:py-44">
           <img src={footmateLogo} alt="FOOTMATE underlay" width={757} height={239} loading="lazy" className="h-14 w-auto md:h-20" />
-          <h2 className="statement-title mt-14 max-w-4xl">THE FOUNDATION OF BETTER FLOORS.</h2>
+          <h2 className="statement-title mt-14 max-w-4xl">THE FOUNDATION OF <span className="text-spectrum">BETTER FLOORS.</span></h2>
           <p className="mt-8 max-w-md leading-relaxed text-muted-foreground">One name beneath every step — a considered foundation for the spaces you call home.</p>
         </Reveal>
       </section>
