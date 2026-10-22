@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import comfortStory from "@/assets/footmate-comfort-story.png.asset.json";
 import cosyStory from "@/assets/footmate-cosy-story.png.asset.json";
-import plushStory from "@/assets/footmate-plush-story.png.asset.json";
+import plushStory from "@/assets/footmate-plush-story-v2.png.asset.json";
 import serenityStory from "@/assets/footmate-serenity-story.png.asset.json";
 import { Reveal } from "@/components/site/primitives";
 import { getProduct, type ProductSlug } from "@/data/products";
