@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Parallax, Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
 import { ProductHighlight } from "@/components/site/ProductHighlight";
+import { SpacesWeLove } from "@/components/site/SpacesWeLove";
 import { CTASection } from "@/components/site/CTASection";
 import { products } from "@/data/products";
 import { seo } from "@/lib/seo";
@@ -141,6 +142,8 @@ function Home() {
       </section>
 
       <ProductHighlight />
+
+      <SpacesWeLove />
 
       {/* Advantages */}
       <section className="container-site py-28 md:py-40">

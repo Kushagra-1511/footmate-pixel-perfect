@@ -46,7 +46,7 @@ export function SpacesWeLove() {
               <Reveal delay={120} className={`container-site lg:col-span-4 lg:px-14 ${flip ? "lg:order-1" : ""}`}>
                 <div className="border-l-2 pl-6" style={{ borderColor: p.accentColour }}>
                   <p className="nav-caps text-muted-foreground">0{i + 1} — {s.space}</p>
-                  <p className="nav-caps mt-2" style={{ color: p.accentColour }}>{p.name} · {p.grade} · {p.thickness}</p>
+                  <p className="nav-caps mt-2" style={{ color: p.accentColour }}>{p.name} · {p.densityCategory} · {p.thicknessMm} mm</p>
                 </div>
                 <span aria-hidden className="mt-8 block text-7xl font-extralight leading-none" style={{ color: p.accentColour }}>“</span>
                 <blockquote className="-mt-4 text-xl font-light leading-snug md:text-2xl">{s.quote}</blockquote>
