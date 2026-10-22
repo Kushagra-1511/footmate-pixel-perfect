@@ -9,10 +9,10 @@
 - [x] Verify desktop/mobile imagery, navigation, sample selection and existing tests.
 - [x] Add supplied Serenity studio photograph and the carpet-reveal room photograph, completing the image set.
 # Brand identity & navigation
-- [ ] Centre the FOOTMATE logo in the navbar (grid layout, scroll shrink, mobile balance).
-- [ ] Strengthen brand presence: homepage brand moment, product naming hierarchy, stories label, footer sign-off.
-- [ ] Verify centring at all widths, no link overlap, tests green.
+- [x] Centre the FOOTMATE logo in the navbar (grid layout, scroll shrink, mobile balance).
+- [x] Strengthen brand presence: homepage brand moment, product naming hierarchy, stories label, footer sign-off.
+- [x] Verify centring at all widths, no link overlap, tests green.
 
 # Vibrancy pass
-- [ ] Add a creative, vibrant layer to the site (colour accents, motion, editorial flair) while keeping the Bolon-inspired luxury feel.
-- [ ] Verify desktop/mobile and tests.
+- [x] Add a creative, vibrant layer to the site (colour accents, motion, editorial flair) while keeping the Bolon-inspired luxury feel.
+- [x] Verify desktop/mobile and tests.
