@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Thermometer, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
 import hero from "@/assets/hero-interior.jpg";
+import skyline from "@/assets/footmate-skyline-campaign.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Parallax, Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
@@ -91,6 +92,13 @@ function Home() {
             <Reveal key={p.slug} delay={i * 90}><ProductCard product={p} /></Reveal>
           ))}
         </div>
+      </section>
+
+      {/* Full-width campaign feature — supplied artwork, shown uncropped */}
+      <section aria-label="The comfort beneath" className="relative bg-charcoal">
+        <img src={skyline.url} alt="The comfort beneath — a penthouse living room above a city skyline, carpet rolled back to reveal FOOTMATE Comfort underlay" loading="lazy" width={1672} height={941} className="block h-auto w-full" />
+        <Link to="/products" aria-label="Explore our range" className="absolute left-[3%] top-[77.5%] h-[6.5%] w-[12%] focus-visible:outline focus-visible:outline-2 focus-visible:outline-charcoal-foreground" />
+        <Link to="/why-underlay" aria-label="Discover FOOTMATE" className="absolute left-[16.5%] top-[77.5%] h-[6.5%] w-[12.5%] focus-visible:outline focus-visible:outline-2 focus-visible:outline-charcoal-foreground" />
       </section>
 
       {/* Editorial split — material */}
