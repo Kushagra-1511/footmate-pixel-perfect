@@ -23,7 +23,7 @@ export function SpacesWeLove() {
     <section aria-labelledby="spaces-title" className="py-24 md:py-36">
       <div className="container-site">
         <Reveal className="max-w-3xl">
-          <p className="eyebrow">Illustrative Customer Stories</p>
+          <p className="eyebrow">FOOTMATE / Stories of Comfort</p>
           <h2 id="spaces-title" className="statement-title mt-6">THE SPACES WE LOVE.</h2>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
             Concept stories imagining FOOTMATE in four considered interiors. Quotations are illustrative only and are not verified customer reviews.

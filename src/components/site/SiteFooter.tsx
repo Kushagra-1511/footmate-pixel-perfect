@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import footmateLogo from "@/assets/footmate-logo.png";
 import sarvaLogo from "@/assets/sarva-logo.png";
 import { company, mainNav } from "@/data/site";
 import { products } from "@/data/products";
@@ -6,9 +7,17 @@ import { products } from "@/data/products";
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-ink-foreground">
+      {/* Brand sign-off — official wordmark on a light panel so the navy artwork stays true */}
+      <div className="container-site flex flex-col items-center border-b border-ink-foreground/10 py-16 text-center md:py-24">
+        <div className="rounded-sm bg-ink-foreground px-10 py-7 md:px-14 md:py-9">
+          <img src={footmateLogo} alt="FOOTMATE underlay" width={757} height={239} loading="lazy" className="h-12 w-auto md:h-16" />
+        </div>
+        <p className="mt-10 text-2xl font-light tracking-tight md:text-3xl">{company.tagline}</p>
+        <p className="nav-caps mt-4 text-ink-foreground/50">Recycled. Remade. Refined.</p>
+      </div>
       <div className="container-site grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <p className="text-3xl font-bold tracking-tight md:text-4xl">{company.tagline}</p>
+          <p className="text-2xl font-light tracking-tight md:text-3xl">The comfort beneath.</p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-foreground/65">
             FOOTMATE recycled polyurethane foam carpet underlay, brought to Australia by {company.legalName}.
           </p>

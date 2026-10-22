@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Thermometer, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
 import hero from "@/assets/hero-interior.jpg";
+import footmateLogo from "@/assets/footmate-logo.png";
 import skyline from "@/assets/footmate-skyline-campaign.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Parallax, Reveal } from "@/components/site/primitives";
@@ -93,6 +94,15 @@ function Home() {
             <Reveal key={p.slug} delay={i * 90}><ProductCard product={p} /></Reveal>
           ))}
         </div>
+      </section>
+
+      {/* Brand moment — oversized identity, warm ivory, generous negative space */}
+      <section aria-label="FOOTMATE brand statement" className="border-y border-border/60 bg-background">
+        <Reveal className="container-site flex flex-col items-center py-28 text-center md:py-44">
+          <img src={footmateLogo} alt="FOOTMATE underlay" width={757} height={239} loading="lazy" className="h-14 w-auto md:h-20" />
+          <h2 className="statement-title mt-14 max-w-4xl">THE FOUNDATION OF BETTER FLOORS.</h2>
+          <p className="mt-8 max-w-md leading-relaxed text-muted-foreground">One name beneath every step — a considered foundation for the spaces you call home.</p>
+        </Reveal>
       </section>
 
       {/* Full-width campaign feature — supplied artwork, shown uncropped */}
