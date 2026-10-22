@@ -239,6 +239,40 @@
   text-transform: uppercase;
 }
 
+/* Four-product spectrum — the brand's colour signature */
+@utility text-spectrum {
+  background-image: linear-gradient(92deg, var(--spring), var(--pulse) 38%, var(--bloom) 68%, var(--bounce));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@utility spectrum-rule {
+  height: 3px;
+  background-image: linear-gradient(90deg, var(--spring) 0 25%, var(--bounce) 25% 50%, var(--pulse) 50% 75%, var(--bloom) 75% 100%);
+}
+
+/* Underline that sweeps in from the left on hover */
+@utility link-sweep {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease-out-soft);
+  }
+  &:hover::after, &[data-status="active"]::after {
+    transform: scaleX(1);
+  }
+}
+
 
 /* Slow image zoom inside a tile on hover */
 @utility zoom-tile {
