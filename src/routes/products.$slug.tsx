@@ -45,9 +45,10 @@ function ProductPage() {
           <ProductSwatch product={p} large className="aspect-[4/3] lg:sticky lg:top-24" />
         </div>
         <div className="lg:col-span-5 lg:pt-6">
-          <ColourBadge product={p} />
+          <p className="nav-caps text-muted-foreground">FOOTMATE / The Collection</p>
+          <div className="mt-4"><ColourBadge product={p} /></div>
           <h1 className="display-xl mt-6">{p.name}</h1>
-          <p className="mt-4 text-xl font-semibold">{p.thicknessMm} mm · {p.densityCategory} classification</p>
+          <p className="mt-4 text-xl font-semibold">{p.densityCategory} · {p.thicknessMm} mm classification</p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{p.fullDescription}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg"><Link to="/request-samples" search={{ product: p.slug }}>Request a {p.name} sample</Link></Button>

@@ -88,9 +88,11 @@ export function ProductCard({ product }: { product: Product }) {
         <ProductSwatch product={product} className="aspect-[4/3]" />
       </Link>
       <div className="flex flex-1 flex-col gap-4 pt-5">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <span aria-hidden className="h-[3px] w-10 origin-left transition-transform duration-500 group-hover:scale-x-[2.5]" style={{ backgroundColor: product.accentColour }} />
+        <p className="nav-caps" style={{ color: product.accentColour }}>FOOTMATE</p>
+        <div className="-mt-2 flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="text-2xl font-light tracking-tight md:text-3xl">{product.name}</h3>
-          <span className="nav-caps text-muted-foreground">{product.thicknessMm} mm · {product.densityCategory}</span>
+          <span className="nav-caps text-muted-foreground">{product.densityCategory} · {product.thicknessMm} mm</span>
         </div>
         <ColourBadge product={product} className="text-muted-foreground" />
         <p className="text-sm leading-relaxed text-muted-foreground">{product.shortDescription}</p>
