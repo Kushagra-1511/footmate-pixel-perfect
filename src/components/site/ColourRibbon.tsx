@@ -14,7 +14,7 @@ export function ColourRibbon() {
           key={p.slug}
           to="/products/$slug"
           params={{ slug: p.slug }}
-          className="relative flex flex-1 flex-col justify-between overflow-hidden p-6 transition-[flex-grow] duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:flex-[2.2] focus-visible:flex-[2.2] md:p-10"
+          className="group/band relative flex flex-1 flex-col justify-between overflow-hidden p-6 transition-[flex-grow] duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:flex-[2.2] focus-visible:flex-[2.2] md:p-10"
           style={{ backgroundColor: p.accentColour }}
           aria-label={`Discover FOOTMATE ${p.name}`}
         >
@@ -22,7 +22,7 @@ export function ColourRibbon() {
           <div>
             <p className="text-3xl font-light tracking-tight text-charcoal md:text-5xl">{p.name}</p>
             <p className="nav-caps mt-3 text-charcoal/70">{p.densityCategory} · {p.thicknessMm} mm</p>
-            <p className="nav-caps mt-6 inline-flex items-center gap-2 text-charcoal opacity-0 transition-opacity duration-500 group-hover/ribbon:opacity-0 [.flex-\[2\.2\]_&]:opacity-100">
+            <p className="nav-caps mt-6 inline-flex items-center gap-2 text-charcoal opacity-0 transition-opacity duration-500 group-hover/band:opacity-100 group-focus-visible/band:opacity-100">
               Discover <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
             </p>
           </div>
