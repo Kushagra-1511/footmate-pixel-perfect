@@ -29,3 +29,7 @@
 - [x] Colour all three words of "Recycled. Repurposed. Redefined." — Recycled coral pink, Repurposed teal, Redefined purple — flat colours, no gradient.
 - [x] Route every copy of the tagline through one component so the theme stays constant site-wide.
 - [x] Verify every tagline instance on desktop/mobile and run tests.
+
+# Tagline on the hero
+- [ ] Place "Recycled. Repurposed. Redefined." on the hero image, where "Luxury from the first step." used to sit.
+- [ ] Verify the hero tagline on desktop and phone without crowding the headline.

@@ -52,7 +52,6 @@ function Home() {
       <div className="border-b border-border/70 bg-background">
         <div className="container-site flex items-center justify-between gap-6 py-2.5">
           <p className="nav-caps rise text-foreground">FOOTMATE by Sarva Australia</p>
-          <p className="nav-caps hidden sm:block"><Motto /></p>
         </div>
       </div>
 
@@ -64,6 +63,7 @@ function Home() {
             <img src={hero.url} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1672} height={941} fetchPriority="high" className="h-full w-full object-cover object-[100%_center]" />
           </div>
           <div className="container-site pt-8 pb-10">
+            <p className="motto-caps rise mb-5"><Motto tone="dark" /></p>
             <h1 className="display-mega rise">The comfort beneath.</h1>
             <div className="rise mt-8 flex flex-col items-start gap-5 [animation-delay:300ms]">
               <TextLink to="/products" light>Explore the range</TextLink>
@@ -80,7 +80,8 @@ function Home() {
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/95 via-charcoal/45 to-transparent" />
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal/50 via-charcoal/10 to-transparent" />
           <div className="container-site flex h-full flex-col justify-end pb-16">
-            <h1 className="display-mega rise mt-6 max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
+            <p className="motto-caps rise mb-6 [animation-delay:60ms]"><Motto tone="dark" /></p>
+            <h1 className="display-mega rise max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
             <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
               <TextLink to="/products" light>Explore the range</TextLink>
               <TextLink to="/request-samples" light>Request samples</TextLink>
