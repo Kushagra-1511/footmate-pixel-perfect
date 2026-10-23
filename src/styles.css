@@ -48,6 +48,11 @@
   --color-bounce: var(--bounce);
   --color-pulse: var(--pulse);
   --color-bloom: var(--bloom);
+  /* Brighter product tints for charcoal and navy panels */
+  --color-spring-lift: oklch(0.68 0.11 195);
+  --color-bounce-lift: oklch(0.84 0.16 128);
+  --color-pulse-lift: oklch(0.62 0.14 320);
+  --color-bloom-lift: oklch(0.78 0.13 22);
   --color-chart-1: var(--spring);
   --color-chart-2: var(--bounce);
   --color-chart-3: var(--pulse);

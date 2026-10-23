@@ -117,11 +117,18 @@ export function Marquee({ children, className }: { children: ReactNode; classNam
   );
 }
 
-/** Brand motto with restrained product-colour accents on two words. */
-export function Motto() {
+const mottoTones = {
+  light: { recycled: "text-bloom", repurposed: "text-spring", redefined: "text-pulse" },
+  dark: { recycled: "text-bloom-lift", repurposed: "text-spring-lift", redefined: "text-pulse-lift" },
+} as const;
+
+/** Brand motto — each word carries one of the FOOTMATE product colours. */
+export function Motto({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const c = mottoTones[tone];
   return (
     <>
-      Recycled. <span className="text-spring">Repurposed.</span> <span className="text-pulse">Redefined.</span>
+      <span className={c.recycled}>Recycled.</span> <span className={c.repurposed}>Repurposed.</span>{" "}
+      <span className={c.redefined}>Redefined.</span>
     </>
   );
 }
