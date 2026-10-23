@@ -54,6 +54,7 @@ export const contactCategories = [
   "Technical Support",
   "Architects & Specifications",
   "Media & Government",
+  "Contact My Nearest Agent",
 ] as const;
 
 export const resourceCategories = [

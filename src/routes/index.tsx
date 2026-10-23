@@ -57,7 +57,7 @@ function Home() {
       </div>
 
       {/* Full-bleed hero */}
-      <section className="relative isolate h-[calc(100svh-6.9rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
+      <section className="relative isolate h-[calc(100svh-9.6rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
         <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
           <img src={hero} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1920} height={1088} fetchPriority="high" className="h-[112%] w-full object-cover object-[70%_center]" />
         </Parallax>
