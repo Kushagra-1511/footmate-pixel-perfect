@@ -18,9 +18,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-md">
       {/* One row: logo left, pages centre, Request Samples right. */}
-      <div className="container-site flex h-[72px] items-center justify-between gap-6">
+      <div className="container-site flex h-20 items-center justify-between gap-6 md:h-24 xl:h-28">
         <Link to="/" aria-label="FOOTMATE home" className="shrink-0">
-          <Logo className="h-9 lg:h-10" />
+          <Logo className="h-12 md:h-16 xl:h-20" />
         </Link>
 
         <nav aria-label="Primary" className="hidden min-w-0 xl:block">
@@ -52,7 +52,7 @@ export function SiteHeader() {
             <SheetContent side="right" className="w-full max-w-sm bg-background p-0">
               <SheetHeader className="border-b border-border p-6">
                 <SheetTitle className="text-left">
-                  <Logo className="h-12" />
+                  <Logo className="h-16" />
                 </SheetTitle>
               </SheetHeader>
               <nav aria-label="Mobile" className="p-6">
