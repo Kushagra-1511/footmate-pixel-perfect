@@ -28,4 +28,4 @@
 # Tagline colours
 - [x] Colour all three words of "Recycled. Repurposed. Redefined." — Recycled coral pink, Repurposed teal, Redefined purple — flat colours, no gradient.
 - [x] Route every copy of the tagline through one component so the theme stays constant site-wide.
-- [ ] Verify every tagline instance on desktop/mobile and run tests.
+- [x] Verify every tagline instance on desktop/mobile and run tests.
