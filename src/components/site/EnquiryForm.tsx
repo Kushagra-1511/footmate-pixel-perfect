@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { products, accentClasses, type ProductSlug } from "@/data/products";
 import { australianStates, businessTypes, contactCategories, tradeCategories } from "@/data/site";
 import { enquirySchema, submitEnquiry } from "@/lib/enquiries.functions";
+import { NEAREST_AGENT_CATEGORY } from "@/data/agents";
 
 type Mode = "trade" | "contact" | "sample";
 
@@ -68,8 +69,10 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
   const [customerType, setCustomerType] = useState<"homeowner" | "trade">("homeowner");
   const [consent, setConsent] = useState(false);
   const [sample, setSample] = useState(mode === "sample");
+  const [category, setCategory] = useState<string>(defaultCategory ?? contactCategories[0]);
 
   const showTrade = mode === "trade" || (mode === "sample" && customerType === "trade");
+  const wantsAgent = mode === "contact" && category === NEAREST_AGENT_CATEGORY;
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -93,7 +96,7 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
       delivery_suburb: get("delivery_suburb"),
       delivery_postcode: get("delivery_postcode"),
       intended_application: get("intended_application"),
-      message: get("message"),
+      message: wantsAgent && get("country") ? `Country: ${get("country")}\n\n${get("message")}`.trim() : get("message"),
       consent,
       website: get("website"),
     };
@@ -103,6 +106,11 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
     if (mode === "sample" && selected.length === 0) errs['products'] = "Please choose at least one product";
     if (mode === "sample" && !get("delivery_postcode")) errs['delivery_postcode'] = "Please enter a postcode";
     if (mode !== "contact" && !get("state")) errs['state'] = "Please select a state or territory";
+    if (wantsAgent) {
+      if (!get("delivery_suburb")) errs['delivery_suburb'] = "Please enter your city or suburb";
+      if (!get("delivery_postcode")) errs['delivery_postcode'] = "Please enter a postcode";
+      if (!get("state")) errs['state'] = "Please select a state or territory";
+    }
     if (mode === "trade" && !get("company")) errs['company'] = "Please enter your company";
     setErrors(errs);
     if (Object.keys(errs).length) return;
@@ -183,7 +191,7 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
         <Field id="phone" label="Phone" error={err("phone")}>
           <Input id="phone" name="phone" type="tel" autoComplete="tel" className={inputCls} />
         </Field>
-        <Field id="state" label="State or territory" required={mode !== "contact"} error={err("state")}>
+        <Field id="state" label="State or territory" required={mode !== "contact" || wantsAgent} error={err("state")}>
           <select id="state" name="state" className={selectCls} defaultValue="">
             <option value="">Select…</option>
             {australianStates.map((s) => <option key={s}>{s}</option>)}
@@ -223,10 +231,34 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
 
         {mode === "contact" && (
           <Field id="enquiry_category" label="Enquiry type">
-            <select id="enquiry_category" name="enquiry_category" className={selectCls} defaultValue={defaultCategory ?? contactCategories[0]}>
+            <select id="enquiry_category" name="enquiry_category" className={selectCls} value={category} onChange={(e) => setCategory(e.target.value)}>
               {contactCategories.map((s) => <option key={s}>{s}</option>)}
             </select>
           </Field>
+        )}
+
+        {wantsAgent && (
+          <fieldset className="space-y-6 border-l-2 border-spring bg-card/60 p-6 md:col-span-2">
+            <legend className="sr-only">Your location</legend>
+            <div>
+              <p className="nav-caps text-spring">Find your nearest agent</p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                Looking for a FOOTMATE representative near you? Share your location and we'll help connect you with the appropriate agent.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              <Field id="delivery_suburb" label="City / Suburb" required error={err("delivery_suburb")}>
+                <Input id="delivery_suburb" name="delivery_suburb" autoComplete="address-level2" className={inputCls} aria-invalid={!!err("delivery_suburb")} />
+              </Field>
+              <Field id="delivery_postcode" label="Postcode" required error={err("delivery_postcode")}>
+                <Input id="delivery_postcode" name="delivery_postcode" inputMode="numeric" autoComplete="postal-code" className={inputCls} aria-invalid={!!err("delivery_postcode")} />
+              </Field>
+              <Field id="country" label="Country">
+                <Input id="country" name="country" autoComplete="country-name" defaultValue="Australia" className={inputCls} />
+              </Field>
+            </div>
+            <p className="text-xs text-muted-foreground">Please also choose your state or territory above.</p>
+          </fieldset>
         )}
 
         {mode === "sample" && (

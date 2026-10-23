@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { products } from "@/data/products";
-import { Breadcrumbs, PageHero, Reveal, SectionHeading } from "@/components/site/primitives";
+import { Breadcrumbs, Motto, PageHero, Reveal, SectionHeading } from "@/components/site/primitives";
 import { CTASection } from "@/components/site/CTASection";
 import { seo } from "@/lib/seo";
 
@@ -31,7 +31,7 @@ function SustainabilityPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Sustainability" }]} />
-      <PageHero eyebrow="Sustainability" title="Recycled. Remade. Refined." intro="FOOTMATE is built on a simple idea: give polyurethane foam another purpose, and make it something people genuinely want beneath their floors." />
+      <PageHero eyebrow="Sustainability" title={<Motto />} intro="FOOTMATE is built on a simple idea: give polyurethane foam another purpose, and make it something people genuinely want beneath their floors." />
 
       <section className="container-site py-24">
         <SectionHeading eyebrow="The process" title="From recovered foam to a comfortable floor." />

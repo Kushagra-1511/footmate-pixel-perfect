@@ -5,7 +5,7 @@ export const company = {
   brand: "FOOTMATE",
   parent: "Sarva Foam Industries",
   tagline: "Luxury from the first step.",
-  secondaryLine: "Recycled. Remade. Refined.",
+  secondaryLine: "Recycled. Repurposed. Redefined.",
   // Only verified details go here. null = not displayed.
   email: null as string | null,
   phone: null as string | null,
@@ -54,6 +54,7 @@ export const contactCategories = [
   "Technical Support",
   "Architects & Specifications",
   "Media & Government",
+  "Contact My Nearest Agent",
 ] as const;
 
 export const resourceCategories = [

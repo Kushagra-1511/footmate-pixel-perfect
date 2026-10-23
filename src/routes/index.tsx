@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Thermometer, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
-import hero from "@/assets/hero-interior.jpg";
+import hero from "@/assets/hero-family.jpg";
 import footmateLogo from "@/assets/footmate-logo.png";
 import skyline from "@/assets/footmate-skyline-campaign.png.asset.json";
 import { Button } from "@/components/ui/button";
-import { Parallax, Reveal } from "@/components/site/primitives";
+import { Motto, Parallax, Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
 import { ColourRibbon } from "@/components/site/ColourRibbon";
 import { ProductHighlight } from "@/components/site/ProductHighlight";
@@ -52,18 +52,18 @@ function Home() {
       <div className="border-b border-border/70 bg-background">
         <div className="container-site flex items-center justify-between gap-6 py-2.5">
           <p className="nav-caps rise text-foreground">FOOTMATE by Sarva Australia</p>
-          <p className="nav-caps hidden text-muted-foreground sm:block">Recycled. Remade. Refined.</p>
+          <p className="nav-caps hidden text-muted-foreground sm:block">Recycled. Repurposed. Redefined.</p>
         </div>
       </div>
 
       {/* Full-bleed hero */}
-      <section className="relative isolate h-[calc(100svh-6.9rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
+      <section className="relative isolate h-[calc(100svh-9.6rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
         <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
-          <img src={hero} alt="Sunlit living room with soft neutral carpet" width={1920} height={1152} fetchPriority="high" className="h-[112%] w-full object-cover" />
+          <img src={hero} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1920} height={1088} fetchPriority="high" className="h-[112%] w-full object-cover object-[70%_center]" />
         </Parallax>
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/75 via-charcoal/10 to-transparent" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-tr from-charcoal/70 via-charcoal/10 to-transparent" />
         <div className="container-site flex h-full flex-col justify-end pb-12 md:pb-16">
-          <h1 className="display-mega rise mt-6 max-w-5xl [animation-delay:120ms]">Luxury from the first step.</h1>
+          <h1 className="display-mega rise mt-6 max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
           <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
             <TextLink to="/products" light>Explore the range</TextLink>
             <TextLink to="/request-samples" light>Request samples</TextLink>
@@ -76,7 +76,7 @@ function Home() {
         <div className="marquee gap-12">
           {[0, 1].map((n) => (
             <div key={n} className="flex shrink-0 items-center gap-12">
-              {["FOOTMATE", "The Comfort Beneath", "Recycled. Remade. Refined.", "Comfort", "Cosy", "Plush", "Serenity"].map((t, i) => (
+              {["FOOTMATE", "The Comfort Beneath", "Recycled. Repurposed. Redefined.", "Comfort", "Cosy", "Plush", "Serenity"].map((t, i) => (
                 <span key={t} className="flex items-center gap-12">
                   <span className="nav-caps whitespace-nowrap text-muted-foreground">{t}</span>
                   <span className={`h-1.5 w-1.5 rounded-full ${["bg-spring", "bg-bounce", "bg-pulse", "bg-bloom"][i % 4]}`} />
@@ -89,7 +89,7 @@ function Home() {
 
       <section className="container-site py-24 md:py-32">
         <Reveal className="mx-auto max-w-5xl text-center">
-          <p className="eyebrow">Recycled. Remade. Refined.</p>
+          <p className="eyebrow"><Motto /></p>
           <h2 className="statement-title mt-8">EXCEPTIONAL FLOORS START<br className="hidden md:block" /> BELOW THE SURFACE.</h2>
           <p className="mx-auto mt-8 max-w-xl leading-relaxed text-muted-foreground">A considered foundation for the spaces you call home. Four distinct underlays, bringing comfort and support to every step.</p>
           <div className="mt-10"><TextLink to="/why-underlay">Why underlay matters</TextLink></div>
@@ -193,8 +193,8 @@ function Home() {
       <section className="grid bg-charcoal text-charcoal-foreground lg:grid-cols-12">
         <div className="flex flex-col justify-center px-6 py-20 md:px-16 lg:order-1 lg:col-span-5">
           <Reveal>
-            <p className="nav-caps text-charcoal-foreground/60">Recycled. Remade. Refined.</p>
-            <h2 className="display-lg mt-6">Giving polyurethane foam another purpose.</h2>
+            <p className="nav-caps text-charcoal-foreground/60">Recycled. Repurposed. Redefined.</p>
+            <h2 className="display-lg mt-6">Giving end-of-life PU foam another purpose.</h2>
             <p className="mt-6 leading-relaxed text-charcoal-foreground/70">
               FOOTMATE is made by recovering polyurethane foam, processing it into fine pieces and rebonding it into a resilient new sheet — turning material that has already been made into a useful layer beneath your floor.
             </p>

@@ -116,3 +116,12 @@ export function Marquee({ children, className }: { children: ReactNode; classNam
     </div>
   );
 }
+
+/** Brand motto with restrained product-colour accents on two words. */
+export function Motto() {
+  return (
+    <>
+      Recycled. <span className="text-spring">Repurposed.</span> <span className="text-pulse">Redefined.</span>
+    </>
+  );
+}
