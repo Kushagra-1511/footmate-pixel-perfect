@@ -57,11 +57,12 @@ function Home() {
       </div>
 
       {/* Full-bleed hero */}
-      <section className="relative isolate h-[calc(100svh-9.6rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
+      <section className="relative isolate h-[min(calc(100svh-9.6rem),94vw)] min-h-[380px] overflow-hidden bg-charcoal text-charcoal-foreground">
         <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
-          <img src={hero.url} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1672} height={941} fetchPriority="high" className="h-[112%] w-full object-cover object-[68%_center]" />
+          <img src={hero.url} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1672} height={941} fetchPriority="high" className="h-[112%] w-full object-cover object-[100%_center]" />
         </Parallax>
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-tr from-charcoal/70 via-charcoal/10 to-transparent" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-transparent" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal/50 via-charcoal/10 to-transparent" />
         <div className="container-site flex h-full flex-col justify-end pb-12 md:pb-16">
           <h1 className="display-mega rise mt-6 max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
           <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
