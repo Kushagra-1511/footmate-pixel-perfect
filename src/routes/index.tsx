@@ -50,9 +50,9 @@ function Home() {
     <>
       {/* Masthead rule */}
       <div className="border-b border-border/70 bg-background">
-        <div className="container-site flex items-center justify-between gap-6 py-2.5">
+        <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1.5 py-2.5">
           <p className="nav-caps rise text-foreground">FOOTMATE by Sarva Australia</p>
-          <p className="nav-caps hidden sm:block"><Motto /></p>
+          <p className="nav-caps"><Motto /></p>
         </div>
       </div>
 
