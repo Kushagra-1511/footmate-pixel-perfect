@@ -18,18 +18,18 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-md">
       {/* One row: logo left, pages centre, Request Samples right. */}
-      <div className="container-site flex h-20 items-center justify-between gap-6 md:h-24 xl:h-28">
+      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4 md:py-5 2xl:h-28 2xl:flex-nowrap 2xl:py-0">
         <Link to="/" aria-label="FOOTMATE home" className="shrink-0">
           <Logo className="h-12 md:h-16 xl:h-20" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden min-w-0 xl:block">
-          <ul className="flex items-center gap-4 2xl:gap-8">
+        <nav aria-label="Primary" className="order-3 hidden w-full min-w-0 md:block 2xl:order-none 2xl:w-full 2xl:flex-1">
+          <ul className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 md:justify-between">
             {barNav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="nav-caps link-sweep whitespace-nowrap pb-1 tracking-[0.12em] 2xl:tracking-[0.18em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                  className="link-sweep whitespace-nowrap pb-1 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-muted-foreground transition-colors duration-300 hover:text-foreground md:text-[0.75rem]"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
@@ -45,7 +45,7 @@ export function SiteHeader() {
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
                 <Menu className="size-6" />
               </Button>
             </SheetTrigger>

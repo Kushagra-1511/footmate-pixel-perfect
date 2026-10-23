@@ -29,3 +29,9 @@
 - [x] Colour all three words of "Recycled. Repurposed. Redefined." — Recycled coral pink, Repurposed teal, Redefined purple — flat colours, no gradient.
 - [x] Route every copy of the tagline through one component so the theme stays constant site-wide.
 - [x] Verify every tagline instance on desktop/mobile and run tests.
+
+# Tagline on the hero
+- [x] Placed on the hero at the user's request, then moved back beside the brand line on request.
+- [x] Verified hero is clean and the brand strip carries the tagline on desktop and phone.
+- [x] Menu links spread edge to edge of the bar at every width, one line, no overflow.
+- [x] Tagline sits beside "FOOTMATE by Sarva Australia" (stacked on phone) and is gone from the photo.
