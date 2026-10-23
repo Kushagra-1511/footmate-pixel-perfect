@@ -21,5 +21,6 @@
 - [ ] Reframe so no person is cut off and the headline stays legible on desktop and phone.
 
 # USE category options
-- [ ] Add Domestic and Commercial options under the USE filter and make them filter correctly.
+- [x] Add Domestic and Commercial options under the USE filter and make them filter correctly.
+- [x] Remove Staircases from the USE filter, leaving Domestic and Commercial only.
 - [ ] Verify the new USE options on desktop/mobile and run tests.
