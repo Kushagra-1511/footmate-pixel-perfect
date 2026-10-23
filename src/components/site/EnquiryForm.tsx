@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { products, accentClasses, type ProductSlug } from "@/data/products";
 import { australianStates, businessTypes, contactCategories, tradeCategories } from "@/data/site";
 import { enquirySchema, submitEnquiry } from "@/lib/enquiries.functions";
+import { NEAREST_AGENT_CATEGORY } from "@/data/agents";
 
 type Mode = "trade" | "contact" | "sample";
 
@@ -95,7 +96,7 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
       delivery_suburb: get("delivery_suburb"),
       delivery_postcode: get("delivery_postcode"),
       intended_application: get("intended_application"),
-      message: get("message"),
+      message: wantsAgent && get("country") ? `Country: ${get("country")}\n\n${get("message")}`.trim() : get("message"),
       consent,
       website: get("website"),
     };
@@ -105,6 +106,11 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
     if (mode === "sample" && selected.length === 0) errs['products'] = "Please choose at least one product";
     if (mode === "sample" && !get("delivery_postcode")) errs['delivery_postcode'] = "Please enter a postcode";
     if (mode !== "contact" && !get("state")) errs['state'] = "Please select a state or territory";
+    if (wantsAgent) {
+      if (!get("delivery_suburb")) errs['delivery_suburb'] = "Please enter your city or suburb";
+      if (!get("delivery_postcode")) errs['delivery_postcode'] = "Please enter a postcode";
+      if (!get("state")) errs['state'] = "Please select a state or territory";
+    }
     if (mode === "trade" && !get("company")) errs['company'] = "Please enter your company";
     setErrors(errs);
     if (Object.keys(errs).length) return;
@@ -185,7 +191,7 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
         <Field id="phone" label="Phone" error={err("phone")}>
           <Input id="phone" name="phone" type="tel" autoComplete="tel" className={inputCls} />
         </Field>
-        <Field id="state" label="State or territory" required={mode !== "contact"} error={err("state")}>
+        <Field id="state" label="State or territory" required={mode !== "contact" || wantsAgent} error={err("state")}>
           <select id="state" name="state" className={selectCls} defaultValue="">
             <option value="">Select…</option>
             {australianStates.map((s) => <option key={s}>{s}</option>)}
