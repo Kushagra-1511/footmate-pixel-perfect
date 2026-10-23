@@ -77,10 +77,10 @@ function Home() {
           <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
             <img src={hero.url} alt="" width={1672} height={941} fetchPriority="high" className="h-[112%] w-full object-cover object-[100%_center]" />
           </Parallax>
-          <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent" />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal via-charcoal/70 to-transparent" />
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal/50 via-charcoal/10 to-transparent" />
           <div className="container-site flex h-full flex-col justify-end pb-16">
-            <p className="rise mb-9 text-[0.82rem] font-semibold uppercase tracking-[0.18em] [animation-delay:60ms] [text-shadow:0_1px_14px_rgba(0,0,0,0.55)]"><Motto tone="dark" /></p>
+            <p className="rise mb-9 text-[0.82rem] font-semibold uppercase tracking-[0.18em] [animation-delay:60ms] [text-shadow:0_2px_18px_rgba(0,0,0,0.7)]"><Motto tone="dark" /></p>
             <h1 className="display-mega rise max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
             <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
               <TextLink to="/products" light>Explore the range</TextLink>
