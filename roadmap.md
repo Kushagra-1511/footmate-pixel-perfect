@@ -24,3 +24,8 @@
 - [x] Add Domestic and Commercial options under the USE filter and make them filter correctly.
 - [x] Remove Staircases from the USE filter, leaving Domestic and Commercial only.
 - [x] Verify the new USE options on desktop/mobile and run tests.
+
+# Tagline colours
+- [x] Colour all three words of "Recycled. Repurposed. Redefined." — Recycled coral pink, Repurposed teal, Redefined purple — flat colours, no gradient.
+- [x] Route every copy of the tagline through one component so the theme stays constant site-wide.
+- [ ] Verify every tagline instance on desktop/mobile and run tests.
