@@ -41,6 +41,9 @@ describe("product data", () => {
   it("hides contact details until new ones are supplied", () => {
     expect([company.phone, company.email, company.address, company.website]).toEqual([null, null, null, null]);
   });
+  it("lists every product for domestic use and none for commercial until that is verified", () => {
+    expect(products.map((p) => p.useCases)).toEqual([["Domestic"], ["Domestic"], ["Domestic"], ["Domestic"]]);
+  });
 });
 
 describe("Find Your FOOTMATE", () => {
