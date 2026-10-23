@@ -68,8 +68,10 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
   const [customerType, setCustomerType] = useState<"homeowner" | "trade">("homeowner");
   const [consent, setConsent] = useState(false);
   const [sample, setSample] = useState(mode === "sample");
+  const [category, setCategory] = useState<string>(defaultCategory ?? contactCategories[0]);
 
   const showTrade = mode === "trade" || (mode === "sample" && customerType === "trade");
+  const wantsAgent = mode === "contact" && category === NEAREST_AGENT_CATEGORY;
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -223,10 +225,34 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
 
         {mode === "contact" && (
           <Field id="enquiry_category" label="Enquiry type">
-            <select id="enquiry_category" name="enquiry_category" className={selectCls} defaultValue={defaultCategory ?? contactCategories[0]}>
+            <select id="enquiry_category" name="enquiry_category" className={selectCls} value={category} onChange={(e) => setCategory(e.target.value)}>
               {contactCategories.map((s) => <option key={s}>{s}</option>)}
             </select>
           </Field>
+        )}
+
+        {wantsAgent && (
+          <fieldset className="space-y-6 border-l-2 border-spring bg-card/60 p-6 md:col-span-2">
+            <legend className="sr-only">Your location</legend>
+            <div>
+              <p className="nav-caps text-spring">Find your nearest agent</p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                Looking for a FOOTMATE representative near you? Share your location and we'll help connect you with the appropriate agent.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              <Field id="delivery_suburb" label="City / Suburb" required error={err("delivery_suburb")}>
+                <Input id="delivery_suburb" name="delivery_suburb" autoComplete="address-level2" className={inputCls} aria-invalid={!!err("delivery_suburb")} />
+              </Field>
+              <Field id="delivery_postcode" label="Postcode" required error={err("delivery_postcode")}>
+                <Input id="delivery_postcode" name="delivery_postcode" inputMode="numeric" autoComplete="postal-code" className={inputCls} aria-invalid={!!err("delivery_postcode")} />
+              </Field>
+              <Field id="country" label="Country">
+                <Input id="country" name="country" autoComplete="country-name" defaultValue="Australia" className={inputCls} />
+              </Field>
+            </div>
+            <p className="text-xs text-muted-foreground">Please also choose your state or territory above.</p>
+          </fieldset>
         )}
 
         {mode === "sample" && (
