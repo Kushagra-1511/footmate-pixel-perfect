@@ -33,3 +33,4 @@
 # Tagline on the hero
 - [ ] Place "Recycled. Repurposed. Redefined." on the hero image, where "Luxury from the first step." used to sit.
 - [ ] Verify the hero tagline on desktop and phone without crowding the headline.
+- [ ] Spread the menu links evenly across the full width so no dead space is left at full screen.

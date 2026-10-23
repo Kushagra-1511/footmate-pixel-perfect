@@ -23,8 +23,8 @@ export function SiteHeader() {
           <Logo className="h-12 md:h-16 xl:h-20" />
         </Link>
 
-        <nav aria-label="Primary" className="order-3 hidden w-full min-w-0 md:block 2xl:order-none 2xl:w-auto">
-          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5">
+        <nav aria-label="Primary" className="order-3 hidden w-full min-w-0 md:block 2xl:order-none 2xl:w-full 2xl:flex-1">
+          <ul className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 md:justify-between">
             {barNav.map((item) => (
               <li key={item.to}>
                 <Link
