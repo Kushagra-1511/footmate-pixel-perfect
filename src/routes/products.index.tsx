@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumbs, PageHero } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
 import { CTASection } from "@/components/site/CTASection";
-import { products, type DensityCategory, type ProductSlug } from "@/data/products";
+import { products, type DensityCategory, type ProductSlug, type UseCase } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
 
@@ -30,7 +30,7 @@ function ProductsPage() {
   const [thick, setThick] = useState<number | null>(null);
   const [density, setDensity] = useState<DensityCategory | null>(null);
   const [only, setOnly] = useState<ProductSlug | null>(null);
-  const [stairs, setStairs] = useState(false);
+  const [useCase, setUseCase] = useState<UseCase | null>(null);
 
   const list = useMemo(
     () =>
@@ -39,11 +39,11 @@ function ProductsPage() {
           (thick === null || p.thicknessMm === thick) &&
           (density === null || p.densityCategory === density) &&
           (only === null || p.slug === only) &&
-          (!stairs || p.staircaseSuitability === true),
+          (useCase === null || p.useCases.includes(useCase)),
       ),
-    [thick, density, only, stairs],
+    [thick, density, only, useCase],
   );
-  const active = thick !== null || density !== null || only !== null || stairs;
+  const active = thick !== null || density !== null || only !== null || useCase !== null;
 
   return (
     <>
@@ -67,12 +67,14 @@ function ProductsPage() {
             </div>
             <div className="flex items-center gap-2">
               <span className="eyebrow mr-1">Use</span>
-              <Chip on={stairs} onClick={() => setStairs(!stairs)}>Staircases</Chip>
+              {(["Domestic", "Commercial"] as const).map((u) => (
+                <Chip key={u} on={useCase === u} onClick={() => setUseCase(useCase === u ? null : u)}>{u}</Chip>
+              ))}
             </div>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground" aria-live="polite">{list.length} of {products.length} products</span>
-            {active && <Button variant="ghost" size="sm" onClick={() => { setThick(null); setDensity(null); setOnly(null); setStairs(false); }}>Reset filters</Button>}
+            {active && <Button variant="ghost" size="sm" onClick={() => { setThick(null); setDensity(null); setOnly(null); setUseCase(null); }}>Reset filters</Button>}
           </div>
         </div>
 
@@ -81,7 +83,18 @@ function ProductsPage() {
             {list.map((p) => <ProductCard key={p.slug} product={p} />)}
           </div>
         ) : (
-          <p className="mt-16 text-center text-muted-foreground">No products match those filters.</p>
+          useCase === "Commercial" ? (
+            <div className="mt-16 border border-border bg-card p-8 text-center md:p-12">
+              <h2 className="text-xl font-semibold">Commercial suitability is confirmed per project.</h2>
+              <p className="mx-auto mt-3 max-w-xl text-muted-foreground">We haven't published commercial performance data for the range yet. Tell us about your job and we'll confirm the right FOOTMATE product and profile.</p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <Button asChild><Link to="/trade">Trade Enquiry</Link></Button>
+                <Button asChild variant="outline"><Link to="/contact">Contact us</Link></Button>
+              </div>
+            </div>
+          ) : (
+            <p className="mt-16 text-center text-muted-foreground">No products match those filters.</p>
+          )
         )}
 
         <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-border py-8 md:flex-row md:items-center">

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Thermometer, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
-import hero from "@/assets/hero-family.jpg";
+import hero from "@/assets/hero-family.png.asset.json";
 import footmateLogo from "@/assets/footmate-logo.png";
 import skyline from "@/assets/footmate-skyline-campaign.png.asset.json";
 import { Button } from "@/components/ui/button";
@@ -56,17 +56,35 @@ function Home() {
         </div>
       </div>
 
-      {/* Full-bleed hero */}
-      <section className="relative isolate h-[calc(100svh-9.6rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
-        <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
-          <img src={hero} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1920} height={1088} fetchPriority="high" className="h-[112%] w-full object-cover object-[70%_center]" />
-        </Parallax>
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-tr from-charcoal/70 via-charcoal/10 to-transparent" />
-        <div className="container-site flex h-full flex-col justify-end pb-12 md:pb-16">
-          <h1 className="display-mega rise mt-6 max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
-          <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
-            <TextLink to="/products" light>Explore the range</TextLink>
-            <TextLink to="/request-samples" light>Request samples</TextLink>
+      {/* Hero — the family photo, with the headline placed where it stays legible */}
+      <section className="relative isolate overflow-hidden bg-charcoal text-charcoal-foreground">
+        {/* Phone: the whole family in a photo band, headline on the charcoal below */}
+        <div className="md:hidden">
+          <div className="h-[62vw] max-h-[280px] overflow-hidden">
+            <img src={hero.url} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1672} height={941} fetchPriority="high" className="h-full w-full object-cover object-[100%_center]" />
+          </div>
+          <div className="container-site pt-8 pb-10">
+            <h1 className="display-mega rise">The comfort beneath.</h1>
+            <div className="rise mt-8 flex flex-col items-start gap-5 [animation-delay:300ms]">
+              <TextLink to="/products" light>Explore the range</TextLink>
+              <TextLink to="/request-samples" light>Request samples</TextLink>
+            </div>
+          </div>
+        </div>
+
+        {/* Tablet and up: full-bleed photo with the headline over the open carpet */}
+        <div className="relative hidden h-[min(calc(100svh-9.6rem),77vw)] min-h-[420px] md:block">
+          <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
+            <img src={hero.url} alt="" width={1672} height={941} fetchPriority="high" className="h-[112%] w-full object-cover object-[100%_center]" />
+          </Parallax>
+          <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/95 via-charcoal/45 to-transparent" />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal/50 via-charcoal/10 to-transparent" />
+          <div className="container-site flex h-full flex-col justify-end pb-16">
+            <h1 className="display-mega rise mt-6 max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
+            <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
+              <TextLink to="/products" light>Explore the range</TextLink>
+              <TextLink to="/request-samples" light>Request samples</TextLink>
+            </div>
           </div>
         </div>
       </section>

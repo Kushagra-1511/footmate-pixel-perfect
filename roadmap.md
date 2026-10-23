@@ -14,5 +14,13 @@
 - [x] Verify centring at all widths, no link overlap, tests green.
 
 # Vibrancy pass
-- [x] Add a creative, vibrant layer to the site (colour accents, motion, editorial flair) while keeping the Bolon-inspired luxury feel.
 - [x] Verify desktop/mobile and tests.
+
+# Hero photo swap
+- [x] Use the supplied family photo as the homepage hero.
+- [x] Reframe so no person is cut off and the headline stays legible on desktop and phone.
+
+# USE category options
+- [x] Add Domestic and Commercial options under the USE filter and make them filter correctly.
+- [x] Remove Staircases from the USE filter, leaving Domestic and Commercial only.
+- [x] Verify the new USE options on desktop/mobile and run tests.
