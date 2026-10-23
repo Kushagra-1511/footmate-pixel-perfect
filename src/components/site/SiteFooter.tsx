@@ -23,9 +23,6 @@ export function SiteFooter() {
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-foreground/65">
             FOOTMATE recycled polyurethane foam carpet underlay, brought to Australia by {company.legalName}.
           </p>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-sm bg-ink-foreground px-3 py-2">
-            <img src={sarvaLogo} alt="Sarva Foam — Commitment through quality" width={800} height={690} loading="lazy" className="h-10 w-auto" />
-          </div>
         </div>
         <div className="md:col-span-2">
           <p className="eyebrow mb-4 text-ink-foreground/50">Range</p>
@@ -64,6 +61,18 @@ export function SiteFooter() {
             {company.email && <p><a href={`mailto:${company.email}`} className="break-all hover:text-ink-foreground">{company.email}</a></p>}
             {company.address && <p className="leading-relaxed">{company.address}</p>}
           </address>
+        </div>
+      </div>
+      <div className="border-t border-ink-foreground/10">
+        <div className="container-site flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:gap-6">
+          <p className="nav-caps text-ink-foreground/50">A brand of</p>
+          <div className="inline-flex w-fit items-center bg-ink-foreground px-4 py-3">
+            <img src={sarvaLogo} alt="Sarva Foam — Commitment through quality" width={800} height={690} loading="lazy" className="h-12 w-auto" />
+          </div>
+          <div className="text-sm leading-relaxed text-ink-foreground/65 sm:ml-2">
+            <p className="text-ink-foreground/85">Sarva Foam Industries</p>
+            <p>Commitment through quality</p>
+          </div>
         </div>
       </div>
       <div className="border-t border-ink-foreground/10">
