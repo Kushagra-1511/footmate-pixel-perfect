@@ -212,7 +212,7 @@ function Home() {
         <div className="flex flex-col justify-center px-6 py-20 md:px-16 lg:order-1 lg:col-span-5">
           <Reveal>
             <p className="nav-caps"><Motto tone="dark" /></p>
-            <h2 className="display-lg mt-6">Giving end-of-life PU foam another purpose.</h2>
+            <h2 className="display-lg mt-6">Giving end-of-life Polyurethane foam another purpose.</h2>
             <p className="mt-6 leading-relaxed text-charcoal-foreground/70">
               FOOTMATE is made by recovering polyurethane foam, processing it into fine pieces and rebonding it into a resilient new sheet — turning material that has already been made into a useful layer beneath your floor.
             </p>
