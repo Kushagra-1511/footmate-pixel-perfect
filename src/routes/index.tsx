@@ -59,11 +59,11 @@ function Home() {
       {/* Full-bleed hero */}
       <section className="relative isolate h-[calc(100svh-6.9rem)] min-h-[560px] overflow-hidden bg-charcoal text-charcoal-foreground">
         <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
-          <img src={hero} alt="Sunlit living room with soft neutral carpet" width={1920} height={1152} fetchPriority="high" className="h-[112%] w-full object-cover" />
+          <img src={hero} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1920} height={1088} fetchPriority="high" className="h-[112%] w-full object-cover object-[70%_center]" />
         </Parallax>
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/75 via-charcoal/10 to-transparent" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-tr from-charcoal/70 via-charcoal/10 to-transparent" />
         <div className="container-site flex h-full flex-col justify-end pb-12 md:pb-16">
-          <h1 className="display-mega rise mt-6 max-w-5xl [animation-delay:120ms]">Luxury from the first step.</h1>
+          <h1 className="display-mega rise mt-6 max-w-3xl [animation-delay:120ms]">The comfort beneath.</h1>
           <div className="rise mt-10 flex flex-wrap items-center gap-8 [animation-delay:300ms]">
             <TextLink to="/products" light>Explore the range</TextLink>
             <TextLink to="/request-samples" light>Request samples</TextLink>
