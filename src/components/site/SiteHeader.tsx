@@ -23,13 +23,13 @@ export function SiteHeader() {
           <Logo className="h-9 lg:h-10" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden min-w-0 lg:block">
-          <ul className="flex items-center gap-4 xl:gap-7">
+        <nav aria-label="Primary" className="hidden min-w-0 xl:block">
+          <ul className="flex items-center gap-5 2xl:gap-8">
             {barNav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="nav-caps link-sweep whitespace-nowrap pb-1 text-[0.65rem] tracking-[0.12em] text-muted-foreground transition-colors duration-300 hover:text-foreground xl:text-[0.7rem] xl:tracking-[0.18em]"
+                  className="nav-caps link-sweep whitespace-nowrap pb-1 text-muted-foreground transition-colors duration-300 hover:text-foreground"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
@@ -45,7 +45,7 @@ export function SiteHeader() {
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu">
                 <Menu className="size-6" />
               </Button>
             </SheetTrigger>
