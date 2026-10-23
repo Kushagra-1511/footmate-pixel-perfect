@@ -118,7 +118,7 @@ export function Marquee({ children, className }: { children: ReactNode; classNam
 }
 
 const mottoTones = {
-  light: { recycled: "text-bloom", repurposed: "text-spring", redefined: "text-pulse" },
+  light: { recycled: "text-bloom-deep", repurposed: "text-spring", redefined: "text-pulse" },
   dark: { recycled: "text-bloom-lift", repurposed: "text-spring-lift", redefined: "text-pulse-lift" },
 } as const;
 

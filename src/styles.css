@@ -49,10 +49,12 @@
   --color-pulse: var(--pulse);
   --color-bloom: var(--bloom);
   /* Brighter product tints for charcoal and navy panels */
-  --color-spring-lift: oklch(0.68 0.11 195);
-  --color-bounce-lift: oklch(0.84 0.16 128);
-  --color-pulse-lift: oklch(0.62 0.14 320);
-  --color-bloom-lift: oklch(0.78 0.13 22);
+  --color-spring-lift: oklch(0.78 0.1 195);
+  --color-bounce-lift: oklch(0.85 0.15 128);
+  --color-pulse-lift: oklch(0.75 0.11 320);
+  --color-bloom-lift: oklch(0.8 0.11 25);
+  /* Deeper coral pink so the tagline holds up at small sizes on light panels */
+  --color-bloom-deep: oklch(0.6 0.16 25);
   --color-chart-1: var(--spring);
   --color-chart-2: var(--bounce);
   --color-chart-3: var(--pulse);
