@@ -31,7 +31,7 @@
 - [x] Verify every tagline instance on desktop/mobile and run tests.
 
 # Tagline on the hero
-- [ ] Place "Recycled. Repurposed. Redefined." on the hero image, where "Luxury from the first step." used to sit.
-- [ ] Verify the hero tagline on desktop and phone without crowding the headline.
-- [ ] Spread the menu links evenly across the full width so no dead space is left at full screen.
-- [ ] Put "Recycled. Repurposed. Redefined." back beside "FOOTMATE by Sarva Australia" and remove it from the hero image.
+- [x] Placed on the hero at the user's request, then moved back beside the brand line on request.
+- [x] Verified hero is clean and the brand strip carries the tagline on desktop and phone.
+- [x] Menu links spread edge to edge of the bar at every width, one line, no overflow.
+- [x] Tagline sits beside "FOOTMATE by Sarva Australia" (stacked on phone) and is gone from the photo.
