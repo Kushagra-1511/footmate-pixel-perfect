@@ -57,9 +57,9 @@ function Home() {
       </div>
 
       {/* Full-bleed hero */}
-      <section className="relative isolate h-[min(calc(100svh-9.6rem),94vw)] min-h-[380px] overflow-hidden bg-charcoal text-charcoal-foreground">
-        <Parallax speed={-0.12} className="absolute -inset-y-10 inset-x-0 -z-10">
-          <img src={hero.url} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1672} height={941} fetchPriority="high" className="h-[112%] w-full object-cover object-[100%_center]" />
+      <section className="relative isolate h-[min(calc(100svh-9.6rem),77vw)] min-h-[340px] overflow-hidden bg-charcoal text-charcoal-foreground">
+        <Parallax speed={-0.12} className="absolute inset-x-0 inset-y-0 -z-10 md:-inset-y-10">
+          <img src={hero.url} alt="A young family playing together on soft cream carpet in a sunlit living room" width={1672} height={941} fetchPriority="high" className="h-full w-full object-cover object-[100%_center] md:h-[112%]" />
         </Parallax>
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-transparent" />
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal/50 via-charcoal/10 to-transparent" />

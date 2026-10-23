@@ -30,7 +30,6 @@ function ProductsPage() {
   const [thick, setThick] = useState<number | null>(null);
   const [density, setDensity] = useState<DensityCategory | null>(null);
   const [only, setOnly] = useState<ProductSlug | null>(null);
-  const [stairs, setStairs] = useState(false);
   const [useCase, setUseCase] = useState<UseCase | null>(null);
 
   const list = useMemo(
@@ -40,12 +39,11 @@ function ProductsPage() {
           (thick === null || p.thicknessMm === thick) &&
           (density === null || p.densityCategory === density) &&
           (only === null || p.slug === only) &&
-          (!stairs || p.staircaseSuitability === true) &&
           (useCase === null || p.useCases.includes(useCase)),
       ),
-    [thick, density, only, stairs, useCase],
+    [thick, density, only, useCase],
   );
-  const active = thick !== null || density !== null || only !== null || stairs || useCase !== null;
+  const active = thick !== null || density !== null || only !== null || useCase !== null;
 
   return (
     <>
@@ -72,12 +70,11 @@ function ProductsPage() {
               {(["Domestic", "Commercial"] as const).map((u) => (
                 <Chip key={u} on={useCase === u} onClick={() => setUseCase(useCase === u ? null : u)}>{u}</Chip>
               ))}
-              <Chip on={stairs} onClick={() => setStairs(!stairs)}>Staircases</Chip>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground" aria-live="polite">{list.length} of {products.length} products</span>
-            {active && <Button variant="ghost" size="sm" onClick={() => { setThick(null); setDensity(null); setOnly(null); setStairs(false); setUseCase(null); }}>Reset filters</Button>}
+            {active && <Button variant="ghost" size="sm" onClick={() => { setThick(null); setDensity(null); setOnly(null); setUseCase(null); }}>Reset filters</Button>}
           </div>
         </div>
 
