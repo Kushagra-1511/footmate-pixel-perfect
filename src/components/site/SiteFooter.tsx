@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import footmateLogo from "@/assets/footmate-logo.png";
 import sarvaLogo from "@/assets/sarva-logo.png";
+import { Motto } from "@/components/site/primitives";
 import { company, mainNav } from "@/data/site";
 import { products } from "@/data/products";
 
@@ -14,7 +15,7 @@ export function SiteFooter() {
           <img src={footmateLogo} alt="FOOTMATE underlay" width={757} height={239} loading="lazy" className="h-12 w-auto md:h-16" />
         </div>
         <p className="mt-10 text-2xl font-light tracking-tight md:text-3xl">{company.tagline}</p>
-        <p className="nav-caps mt-4 text-ink-foreground/50">Recycled. Repurposed. Redefined.</p>
+        <p className="nav-caps mt-4"><Motto tone="dark" /></p>
       </div>
       <div className="container-site grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
