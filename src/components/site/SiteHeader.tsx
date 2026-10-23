@@ -92,6 +92,29 @@ export function SiteHeader() {
           </SheetContent>
         </Sheet>
       </div>
+
+      {/* Smaller screens: every page stays visible on the navbar in a second row. */}
+      <nav aria-label="Pages" className="border-t border-border/60 xl:hidden">
+        <ul className="container-site flex items-center gap-6 overflow-x-auto py-3 [scrollbar-width:none]">
+          {mainNav.map((item) => (
+            <li key={item.to} className="shrink-0">
+              <Link
+                to={item.to}
+                className="nav-caps link-sweep whitespace-nowrap pb-1 text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                activeProps={{ className: "text-foreground" }}
+                activeOptions={{ exact: item.to === "/" }}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+          <li className="shrink-0">
+            <Link to="/request-samples" className="nav-caps whitespace-nowrap bg-primary px-3 py-2 text-primary-foreground">
+              Request Samples
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
