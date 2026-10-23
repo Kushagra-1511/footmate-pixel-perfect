@@ -16,6 +16,7 @@ import serenityInterior from "@/assets/footmate-serenity-interior.png.asset.json
 export type ProductSlug = "spring" | "bounce" | "pulse" | "bloom";
 export type DensityCategory = "HD+" | "UHD";
 export type Thickness = 9 | 11;
+export type UseCase = "Domestic" | "Commercial";
 export const RATING_MAX = 6;
 export const materialLayers = ["Branded laminate", "Reinforcing mesh", "Polyurethane rebonded foam"];
 export type Rating = number | null; // out of RATING_MAX, from the finalised booklet only
@@ -55,6 +56,8 @@ export interface Product {
   keyBenefits: string[];
   /** Only verified application suitability. Empty = confirm with our team. */
   suitableApplications: string[];
+  /** Verified end-use contexts. Empty = confirm with our team. */
+  useCases: UseCase[];
   /** true / false when verified, null when not yet confirmed */
   staircaseSuitability: boolean | null;
   thermalInformation: string | null;
@@ -115,6 +118,7 @@ export const products: Product[] = [
       "Made from post-consumer waste",
     ],
     suitableApplications: [],
+    useCases: ["Domestic"],
     staircaseSuitability: null,
     thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
     soundInformation: "Sound absorption — booklet feature; acoustic test data available on request",
@@ -149,6 +153,7 @@ export const products: Product[] = [
       "Made from post-consumer waste",
     ],
     suitableApplications: ["Staircases"],
+    useCases: ["Domestic"],
     staircaseSuitability: true,
     thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
     soundInformation: null,
@@ -183,6 +188,7 @@ export const products: Product[] = [
       "Made from post-consumer waste",
     ],
     suitableApplications: [],
+    useCases: ["Domestic"],
     staircaseSuitability: null,
     thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
     soundInformation: "Sound absorption — booklet feature; acoustic test data available on request",
@@ -217,6 +223,7 @@ export const products: Product[] = [
       "Made from post-consumer waste",
     ],
     suitableApplications: ["Staircases"],
+    useCases: ["Domestic"],
     staircaseSuitability: true,
     thermalInformation: "Heat insulation — booklet feature; measured R-value available on request",
     soundInformation: null,
