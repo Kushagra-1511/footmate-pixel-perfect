@@ -18,18 +18,18 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-md">
       {/* One row: logo left, pages centre, Request Samples right. */}
-      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4 md:py-5 xl:h-28 xl:flex-nowrap xl:py-0">
+      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4 md:py-5 2xl:h-28 2xl:flex-nowrap 2xl:py-0">
         <Link to="/" aria-label="FOOTMATE home" className="shrink-0">
           <Logo className="h-12 md:h-16 xl:h-20" />
         </Link>
 
-        <nav aria-label="Primary" className="order-3 hidden w-full min-w-0 md:block xl:order-none xl:w-auto">
-          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 xl:gap-x-8">
+        <nav aria-label="Primary" className="order-3 hidden w-full min-w-0 md:block 2xl:order-none 2xl:w-auto">
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 2xl:gap-x-6">
             {barNav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="link-sweep whitespace-nowrap pb-1 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-muted-foreground transition-colors duration-300 hover:text-foreground md:text-[0.75rem] xl:text-[0.8rem] xl:tracking-[0.16em]"
+                  className="link-sweep whitespace-nowrap pb-1 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-muted-foreground transition-colors duration-300 hover:text-foreground md:text-[0.75rem] 2xl:text-[0.78rem]"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}
