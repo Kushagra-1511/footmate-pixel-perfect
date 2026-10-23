@@ -52,7 +52,7 @@ function Home() {
       <div className="border-b border-border/70 bg-background">
         <div className="container-site flex items-center justify-between gap-6 py-2.5">
           <p className="nav-caps rise text-foreground">FOOTMATE by Sarva Australia</p>
-          <p className="nav-caps hidden text-muted-foreground sm:block">Recycled. Repurposed. Redefined.</p>
+          <p className="nav-caps hidden sm:block"><Motto /></p>
         </div>
       </div>
 
@@ -96,7 +96,7 @@ function Home() {
             <div key={n} className="flex shrink-0 items-center gap-12">
               {["FOOTMATE", "The Comfort Beneath", "Recycled. Repurposed. Redefined.", "Comfort", "Cosy", "Plush", "Serenity"].map((t, i) => (
                 <span key={t} className="flex items-center gap-12">
-                  <span className="nav-caps whitespace-nowrap text-muted-foreground">{t}</span>
+                  <span className="nav-caps whitespace-nowrap text-muted-foreground">{t === "Recycled. Repurposed. Redefined." ? <Motto /> : t}</span>
                   <span className={`h-1.5 w-1.5 rounded-full ${["bg-spring", "bg-bounce", "bg-pulse", "bg-bloom"][i % 4]}`} />
                 </span>
               ))}
@@ -211,7 +211,7 @@ function Home() {
       <section className="grid bg-charcoal text-charcoal-foreground lg:grid-cols-12">
         <div className="flex flex-col justify-center px-6 py-20 md:px-16 lg:order-1 lg:col-span-5">
           <Reveal>
-            <p className="nav-caps text-charcoal-foreground/60">Recycled. Repurposed. Redefined.</p>
+            <p className="nav-caps"><Motto tone="dark" /></p>
             <h2 className="display-lg mt-6">Giving end-of-life PU foam another purpose.</h2>
             <p className="mt-6 leading-relaxed text-charcoal-foreground/70">
               FOOTMATE is made by recovering polyurethane foam, processing it into fine pieces and rebonding it into a resilient new sheet — turning material that has already been made into a useful layer beneath your floor.
