@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ConsumerLawRouteImport } from './routes/consumer-law'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -21,6 +23,7 @@ import { Route as SustainabilityRouteImport } from './routes/sustainability'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TradeRouteImport } from './routes/trade'
 import { Route as WhyUnderlayRouteImport } from './routes/why-underlay'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as ProductsCompareRouteImport } from './routes/products.compare'
@@ -30,9 +33,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConsumerLawRoute = ConsumerLawRouteImport.update({
@@ -85,6 +97,11 @@ const WhyUnderlayRoute = WhyUnderlayRouteImport.update({
   path: '/why-underlay',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/products/',
   path: '/products/',
@@ -104,6 +121,7 @@ const ProductsCompareRoute = ProductsCompareRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/consumer-law': typeof ConsumerLawRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
@@ -114,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/trade': typeof TradeRoute
   '/why-underlay': typeof WhyUnderlayRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
   '/products/': typeof ProductsIndexRoute
@@ -121,6 +140,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/consumer-law': typeof ConsumerLawRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
@@ -131,6 +151,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/trade': typeof TradeRoute
   '/why-underlay': typeof WhyUnderlayRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
   '/products': typeof ProductsIndexRoute
@@ -138,7 +159,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/consumer-law': typeof ConsumerLawRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
@@ -149,6 +172,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/trade': typeof TradeRoute
   '/why-underlay': typeof WhyUnderlayRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/compare': typeof ProductsCompareRoute
   '/products/': typeof ProductsIndexRoute
@@ -158,6 +182,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/consumer-law'
     | '/contact'
     | '/privacy'
@@ -168,6 +193,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade'
     | '/why-underlay'
+    | '/admin'
     | '/products/$slug'
     | '/products/compare'
     | '/products/'
@@ -175,6 +201,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/consumer-law'
     | '/contact'
     | '/privacy'
@@ -185,13 +212,16 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade'
     | '/why-underlay'
+    | '/admin'
     | '/products/$slug'
     | '/products/compare'
     | '/products'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/consumer-law'
     | '/contact'
     | '/privacy'
@@ -202,6 +232,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade'
     | '/why-underlay'
+    | '/_authenticated/admin'
     | '/products/$slug'
     | '/products/compare'
     | '/products/'
@@ -209,7 +240,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   ConsumerLawRoute: typeof ConsumerLawRoute
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -234,11 +267,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/consumer-law': {
@@ -311,6 +358,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyUnderlayRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/products/': {
       id: '/products/'
       path: '/products'
@@ -335,9 +389,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   ConsumerLawRoute: ConsumerLawRoute,
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,

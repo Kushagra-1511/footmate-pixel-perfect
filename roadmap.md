@@ -35,3 +35,7 @@
 - [x] Verified hero is clean and the brand strip carries the tagline on desktop and phone.
 - [x] Menu links spread edge to edge of the bar at every width, one line, no overflow.
 - [x] Tagline sits beside "FOOTMATE by Sarva Australia" (stacked on phone) and is gone from the photo.
+
+## Admin area
+- [x] Enquiries dashboard with view/add/edit/delete/export
+- [ ] Make Garvit@footmate.com.au the admin

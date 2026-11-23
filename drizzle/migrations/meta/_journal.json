@@ -8,6 +8,20 @@
       "when": 1792307144271,
       "tag": "0000_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795444356961,
+      "tag": "0001_admin_roles_enquiries",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795444499146,
+      "tag": "0002_grant_owner_admin",
+      "breakpoints": true
     }
   ]
 }
