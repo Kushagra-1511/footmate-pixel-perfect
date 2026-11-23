@@ -108,7 +108,11 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
 
   function exportCsv() {
     const cols = ["created_at", "status", "enquiry_type", "name", "email", "phone", "company", "state", "products", "message", "admin_notes"] as const;
-    const esc = (v: unknown) => `"${String(Array.isArray(v) ? v.map(productName).join("; ") : v ?? "").replace(/"/g, '""')}"`;
+    const esc = (v: unknown) => {
+      let t = String(Array.isArray(v) ? v.map(productName).join("; ") : v ?? "");
+      if (/^[=+\-@\t\r]/.test(t)) t = `'${t}`; // stop spreadsheets running planted formulas
+      return `"${t.replace(/"/g, '""')}"`;
+    };
     const csv = [cols.join(","), ...filtered.map((r) => cols.map((c) => esc(r[c])).join(","))].join("\n");
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
