@@ -110,7 +110,7 @@ function Home() {
           <p className="eyebrow"><Motto /></p>
           <h2 className="statement-title mt-8">EXCEPTIONAL FLOORS START<br className="hidden md:block" /> BELOW THE SURFACE.</h2>
           <p className="mx-auto mt-8 max-w-xl leading-relaxed text-muted-foreground">A considered foundation for the spaces you call home. Four distinct underlays, bringing comfort and support to every step.</p>
-          <div className="mt-10"><TextLink to="/why-underlay">Why underlay matters</TextLink></div>
+          <div className="mt-10 flex flex-wrap justify-center gap-8"><TextLink to="/why-underlay">Why underlay matters</TextLink><TextLink to="/carpet-underlay">Carpet underlay guide</TextLink></div>
         </Reveal>
       </section>
 

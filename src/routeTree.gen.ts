@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CarpetUnderlayRouteImport } from './routes/carpet-underlay'
 import { Route as ConsumerLawRouteImport } from './routes/consumer-law'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -45,6 +46,11 @@ const AboutRoute = AboutRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarpetUnderlayRoute = CarpetUnderlayRouteImport.update({
+  id: '/carpet-underlay',
+  path: '/carpet-underlay',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConsumerLawRoute = ConsumerLawRouteImport.update({
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/carpet-underlay': typeof CarpetUnderlayRoute
   '/consumer-law': typeof ConsumerLawRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/carpet-underlay': typeof CarpetUnderlayRoute
   '/consumer-law': typeof ConsumerLawRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
@@ -162,6 +170,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/carpet-underlay': typeof CarpetUnderlayRoute
   '/consumer-law': typeof ConsumerLawRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
@@ -183,6 +192,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/carpet-underlay'
     | '/consumer-law'
     | '/contact'
     | '/privacy'
@@ -202,6 +212,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/carpet-underlay'
     | '/consumer-law'
     | '/contact'
     | '/privacy'
@@ -222,6 +233,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/about'
     | '/auth'
+    | '/carpet-underlay'
     | '/consumer-law'
     | '/contact'
     | '/privacy'
@@ -243,6 +255,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  CarpetUnderlayRoute: typeof CarpetUnderlayRoute
   ConsumerLawRoute: typeof ConsumerLawRoute
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -286,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carpet-underlay': {
+      id: '/carpet-underlay'
+      path: '/carpet-underlay'
+      fullPath: '/carpet-underlay'
+      preLoaderRoute: typeof CarpetUnderlayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/consumer-law': {
@@ -405,6 +425,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  CarpetUnderlayRoute: CarpetUnderlayRoute,
   ConsumerLawRoute: ConsumerLawRoute,
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,

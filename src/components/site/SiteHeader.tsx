@@ -24,12 +24,12 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary" className="order-3 hidden w-full min-w-0 md:block 2xl:order-none 2xl:w-full 2xl:flex-1">
-          <ul className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 md:justify-between">
+          <ul className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-3 lg:gap-x-5 md:justify-between">
             {barNav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="link-sweep whitespace-nowrap pb-1 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-muted-foreground transition-colors duration-300 hover:text-foreground md:text-[0.75rem]"
+                  className="link-sweep whitespace-nowrap pb-1 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-muted-foreground transition-colors duration-300 hover:text-foreground md:text-[0.68rem] md:tracking-[0.04em] lg:text-[0.72rem] lg:tracking-[0.08em] xl:text-[0.75rem] xl:tracking-[0.1em] 2xl:text-[0.7rem] 2xl:tracking-[0.06em]"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {item.label}

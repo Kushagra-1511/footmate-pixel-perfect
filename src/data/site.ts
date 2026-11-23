@@ -17,6 +17,7 @@ export const company = {
 export const mainNav = [
   { to: "/", label: "Home" },
   { to: "/products", label: "Products" },
+  { to: "/carpet-underlay", label: "Carpet Underlay" },
   { to: "/why-underlay", label: "Why Underlay" },
   { to: "/sustainability", label: "Sustainability" },
   { to: "/trade", label: "Trade & Professionals" },
