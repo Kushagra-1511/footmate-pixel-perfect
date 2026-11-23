@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { tooFast, tooManyLinks } from "./spam";
 
 const productEnum = z.enum(["spring", "bounce", "pulse", "bloom"]);
 
@@ -24,6 +25,8 @@ export const enquirySchema = z.object({
   consent: z.literal(true, { errorMap: () => ({ message: "Please accept the privacy policy" }) }),
   /** Honeypot — must stay empty */
   website: z.string().max(0).optional().or(z.literal("")),
+  /** When the form was opened (ms since epoch) */
+  started_at: z.number().int().positive().optional(),
 });
 
 export type EnquiryInput = z.input<typeof enquirySchema>;
@@ -32,6 +35,10 @@ export const submitEnquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => enquirySchema.parse(input))
   .handler(async ({ data }) => {
     if (data.website) return { ok: true as const }; // silently drop bots
+    if (tooFast(data.started_at, Date.now())) return { ok: true as const }; // bot-speed submission
+    if (tooManyLinks(data.message, data.intended_application, data.estimated_requirement)) {
+      return { ok: false as const, error: "Please remove some web links from your message and try again." };
+    }
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     // Basic anti-spam: max 3 submissions per email per 10 minutes.
@@ -45,7 +52,7 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       return { ok: false as const, error: "We've received several requests from this email recently. Please try again shortly." };
     }
 
-    const { website: _w, ...row } = data;
+    const { website: _w, started_at: _s, ...row } = data;
     const clean = Object.fromEntries(
       Object.entries(row).map(([k, v]) => [k, v === "" ? null : v]),
     ) as Record<string, unknown>;

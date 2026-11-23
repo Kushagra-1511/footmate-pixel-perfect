@@ -71,6 +71,7 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
   const [sample, setSample] = useState(mode === "sample");
   const [category, setCategory] = useState<string>(defaultCategory ?? contactCategories[0]);
 
+  const [startedAt] = useState(() => Date.now());
   const showTrade = mode === "trade" || (mode === "sample" && customerType === "trade");
   const wantsAgent = mode === "contact" && category === NEAREST_AGENT_CATEGORY;
 
@@ -99,6 +100,7 @@ export function EnquiryForm({ mode, defaultCategory, defaultProducts = [] }: { m
       message: wantsAgent && get("country") ? `Country: ${get("country")}\n\n${get("message")}`.trim() : get("message"),
       consent,
       website: get("website"),
+      started_at: startedAt,
     };
     const parsed = enquirySchema.safeParse(payload);
     const errs: Record<string, string> = {};
