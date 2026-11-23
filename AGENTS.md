@@ -18,3 +18,5 @@
 - The rating scale is defined with product data and shared by product displays and comparisons — prevents different pages from presenting inconsistent booklet scores.
 
 - Product photography is mapped centrally with separate nullable studio and architectural image URLs; use the supplied architectural image when a studio identity is missing to avoid fabricated product visuals.
+
+- Admin access is granted only via public.user_roles (has_role); the owner email is auto-granted by a trigger on email confirmation — roles never come from user-editable data.

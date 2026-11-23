@@ -38,4 +38,4 @@
 
 ## Admin area
 - [x] Enquiries dashboard with view/add/edit/delete/export
-- [ ] Make Garvit@footmate.com.au the admin
+- [x] Make Garvit@footmate.com.au the admin (auto on email confirmation)
