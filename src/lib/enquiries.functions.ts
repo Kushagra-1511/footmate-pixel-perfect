@@ -49,7 +49,8 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       .eq("email", data.email.toLowerCase())
       .gte("created_at", since);
     if ((count ?? 0) >= 3) {
-      return { ok: false as const, error: "We've received several requests from this email recently. Please try again shortly." };
+      // Respond identically to a real send so the reply never reveals an email's recent activity.
+      return { ok: true as const };
     }
 
     const { website: _w, started_at: _s, ...row } = data;
