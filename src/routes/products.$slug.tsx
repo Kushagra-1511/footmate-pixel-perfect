@@ -21,10 +21,15 @@ export const Route = createFileRoute("/products/$slug")({
       `${p.shortDescription} FOOTMATE ${p.name} is a ${p.thicknessMm} mm ${p.densityCategory} recycled polyurethane foam carpet underlay.`,
       `/products/${params.slug}`,
       "product",
+      p.productImage,
     );
+    const url = `https://www.footmate.com.au/products/${p.slug}`;
     return {
       ...base,
-      scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Product", name: `FOOTMATE ${p.name}`, description: p.shortDescription, brand: { "@type": "Brand", name: "FOOTMATE" }, color: p.colourName }) }],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Product", name: `FOOTMATE ${p.name}`, description: p.shortDescription, url, image: [p.productImage, p.interiorImage], brand: { "@type": "Brand", name: "FOOTMATE" }, manufacturer: { "@type": "Organization", name: "Sarva Australia Pty Ltd" }, color: p.colourName, material: "Recycled polyurethane foam", category: "Carpet underlay", additionalProperty: [{ "@type": "PropertyValue", name: "Thickness", value: p.thicknessMm, unitCode: "MMT" }, { "@type": "PropertyValue", name: "Density category", value: p.densityCategory }] }) },
+        { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.footmate.com.au/" }, { "@type": "ListItem", position: 2, name: "Products", item: "https://www.footmate.com.au/products" }, { "@type": "ListItem", position: 3, name: `FOOTMATE ${p.name}`, item: url }] }) },
+      ],
     };
   },
   component: ProductPage,
