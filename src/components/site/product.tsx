@@ -51,7 +51,7 @@ export function CompareToggle({ product, className }: { product: Product; classN
       onClick={() => toggle(product.slug)}
       aria-pressed={on}
       className={cn(
-        "inline-flex items-center gap-2 text-xs font-semibold transition-colors",
+        "inline-flex min-h-11 items-center gap-2 text-xs font-semibold transition-colors",
         on ? "text-foreground" : "text-muted-foreground hover:text-foreground",
         className,
       )}
@@ -99,7 +99,7 @@ export function ProductCard({ product }: { product: Product }) {
         <ProductRatings product={product} />
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4">
           <CompareToggle product={product} />
-          <Link to="/products/$slug" params={{ slug: product.slug }} className="nav-caps inline-flex items-center gap-2 underline-offset-4 group-hover:underline">
+          <Link to="/products/$slug" params={{ slug: product.slug }} className="nav-caps inline-flex items-center gap-2 py-2.5 underline-offset-4 group-hover:underline">
             View <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>

@@ -35,7 +35,7 @@ const trade = [
 
 function TextLink({ to, children, light = false }: { to: string; children: React.ReactNode; light?: boolean }) {
   return (
-    <Link to={to} className={`nav-caps group inline-flex items-center gap-3 border-b pb-1.5 transition-colors ${light ? "border-charcoal-foreground/50 hover:border-charcoal-foreground" : "border-foreground/30 hover:border-foreground"}`}>
+    <Link to={to} className={`nav-caps group inline-flex items-center gap-3 border-b py-2.5 transition-colors ${light ? "border-charcoal-foreground/50 hover:border-charcoal-foreground" : "border-foreground/30 hover:border-foreground"}`}>
       {children}<ArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1" />
     </Link>
   );
