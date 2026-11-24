@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Feather, Layers, Recycle, Volume2, Store, Truck, Hammer, Ruler } from "lucide-react";
 import hero from "@/assets/hero-family.png.asset.json";
-import skyline from "@/assets/footmate-skyline-campaign.png.asset.json";
+import skyline from "@/assets/footmate-skyline-clean.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Motto, Reveal } from "@/components/site/primitives";
 import { ProductCard } from "@/components/site/product";
