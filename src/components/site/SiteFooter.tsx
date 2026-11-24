@@ -10,12 +10,12 @@ export function SiteFooter() {
     <footer className="bg-ink text-ink-foreground">
       <div aria-hidden className="spectrum-rule" />
       {/* Brand sign-off — official wordmark on a light panel so the navy artwork stays true */}
-      <div className="container-site flex flex-col items-center border-b border-ink-foreground/10 py-16 text-center md:py-24">
-        <div className="rounded-sm bg-ink-foreground px-10 py-7 md:px-14 md:py-9">
-          <img src={footmateLogo} alt="FOOTMATE underlay" width={757} height={239} loading="lazy" className="h-12 w-auto md:h-16" />
+      <div className="bg-secondary text-foreground">
+        <div className="container-site flex flex-col items-center py-16 text-center md:py-24">
+          <img src={footmateLogo} alt="FOOTMATE underlay" width={757} height={239} loading="lazy" className="h-14 w-auto md:h-20" />
+          <p className="mt-10 text-2xl font-light tracking-tight md:text-3xl">{company.tagline}</p>
+          <p className="nav-caps mt-4"><Motto /></p>
         </div>
-        <p className="mt-10 text-2xl font-light tracking-tight md:text-3xl">{company.tagline}</p>
-        <p className="nav-caps mt-4"><Motto tone="dark" /></p>
       </div>
       <div className="container-site grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
