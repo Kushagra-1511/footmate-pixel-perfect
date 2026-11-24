@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumbs, Reveal } from "@/components/site/primitives";
 import { ColourBadge, CompareToggle, ProductCard, ProductRatings, ProductSwatch, SpecTable } from "@/components/site/product";
 import { accentClasses, getProduct, products, materialLayers } from "@/data/products";
+import { ProductStory } from "@/components/site/SpacesWeLove";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
 
@@ -138,6 +139,8 @@ function ProductPage() {
           </Reveal>
         </div>
       </section>
+
+      <ProductStory slug={p.slug} />
 
       <section className="container-site py-20">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">

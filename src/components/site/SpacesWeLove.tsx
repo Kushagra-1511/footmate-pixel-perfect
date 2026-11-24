@@ -14,7 +14,7 @@ import { getProduct, type ProductSlug } from "@/data/products";
 const stories: { slug: ProductSlug; space: string; image: string; quote: string }[] = [
   { slug: "spring", space: "Penthouse Living Room", image: comfortStory.url, quote: "We spent so much time choosing the perfect carpet, but what went underneath mattered just as much. FOOTMATE Comfort was part of making our living room feel thoughtfully finished, right down to the floor." },
   { slug: "bounce", space: "Coastal Bedroom", image: cosyStory.url, quote: "Our bedroom was designed to feel warm, relaxed and inviting. Choosing FOOTMATE Cosy beneath the carpet felt like a natural part of creating that atmosphere." },
-  { slug: "pulse", space: "Luxury Boutique Hotel", image: plushStory.url, quote: "In hospitality, it's the details guests don't always see that complete a space. We wanted every material choice to feel considered, and FOOTMATE Plush was part of that approach." },
+  { slug: "pulse", space: "Dusk Penthouse Bedroom", image: plushStory.url, quote: "It's the details you don't always see that complete a room. We wanted every material choice in our bedroom to feel considered, and FOOTMATE Plush was part of that approach." },
   { slug: "bloom", space: "Private Library", image: serenityStory.url, quote: "We wanted a quiet retreat where every detail felt intentional. Even the materials hidden beneath the carpet were carefully considered, which is why we chose FOOTMATE Serenity." },
 ];
 
@@ -59,6 +59,32 @@ export function SpacesWeLove() {
           );
         })}
       </div>
+    </section>
+  );
+}
+
+export function ProductStory({ slug }: { slug: ProductSlug }) {
+  const s = stories.find((x) => x.slug === slug);
+  const p = getProduct(slug);
+  if (!s || !p) return null;
+  return (
+    <section aria-label={`${p.name} imagined in a space`} className="py-20 md:py-28">
+      <article className="grid items-center gap-10 lg:grid-cols-12 lg:gap-0">
+        <Reveal className="lg:col-span-8">
+          <div className="zoom-tile overflow-hidden bg-secondary">
+            <img src={s.image} alt={`${s.space} with carpet rolled back over FOOTMATE ${p.name} underlay`} loading="lazy" width={1672} height={941} className="block h-auto w-full" />
+          </div>
+        </Reveal>
+        <Reveal delay={120} className="container-site lg:col-span-4 lg:px-14">
+          <p className="eyebrow">Imagined in a space</p>
+          <div className="mt-6 border-l-2 pl-6" style={{ borderColor: p.accentColour }}>
+            <p className="nav-caps text-muted-foreground">{s.space}</p>
+          </div>
+          <span aria-hidden className="mt-8 block text-7xl font-extralight leading-none" style={{ color: p.accentColour }}>“</span>
+          <blockquote className="-mt-4 text-xl font-light leading-snug md:text-2xl">{s.quote}</blockquote>
+          <p className="mt-6 text-xs text-muted-foreground">Illustrative concept story — not a customer review</p>
+        </Reveal>
+      </article>
     </section>
   );
 }
