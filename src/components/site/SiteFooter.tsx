@@ -64,12 +64,12 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-ink-foreground/10">
-        <div className="container-site flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:gap-6">
-          <p className="nav-caps text-ink-foreground/50">A brand of</p>
-          <div className="inline-flex w-fit items-center bg-ink-foreground px-4 py-3">
+        <div className="container-site flex flex-col items-center gap-4 py-8 text-center sm:flex-row sm:justify-center sm:gap-6">
+          <p className="nav-caps text-ink-foreground/50 sm:flex-1 sm:text-right">A brand of</p>
+          <div className="inline-flex w-fit shrink-0 items-center bg-ink-foreground px-4 py-3">
             <img src={sarvaLogo} alt="Sarva Foam — Commitment through quality" width={800} height={690} loading="lazy" className="h-12 w-auto" />
           </div>
-          <div className="text-sm leading-relaxed text-ink-foreground/65 sm:ml-2">
+          <div className="text-sm leading-relaxed text-ink-foreground/65 sm:flex-1 sm:text-left">
             <p className="text-ink-foreground/85">Sarva Foam Industries</p>
             <p>Commitment through quality</p>
           </div>
